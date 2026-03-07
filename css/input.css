@@ -484,9 +484,11 @@
       border-width: 0 1.5px 1.5px 0;
     }
 
-    /* Hover — brackets close in, dot hides */
+    /* Hover — brackets close in, dot stays visible and grows */
     body.cur-hover #cur-dot {
-      opacity: 0;
+      width: 6px;
+      height: 6px;
+      opacity: 1;
     }
 
     body.cur-hover #cur-brackets {

@@ -988,7 +988,9 @@
       border-width: 0 1.5px 1.5px 0;
     }
     body.cur-hover #cur-dot {
-      opacity: 0;
+      width: 6px;
+      height: 6px;
+      opacity: 1;
     }
     body.cur-hover #cur-brackets {
       width: 22px;

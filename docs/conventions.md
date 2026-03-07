@@ -1,57 +1,85 @@
 # Coding Conventions
 
-## Boot sequence — `main.js`
+## Architecture — Object-Oriented JavaScript
 
-The order in `main.js` is strict and must not be changed:
+All modules export a single **ES6 class**. No named function exports, no module-level state.
 
 ```js
-initI18n(); // 1 — translate DOM before anything is visible
-initLenis(); // 2 — smooth scroll running before animations
-prepHero(); // 3 — set all hero elements to hidden (prevents flash)
-initLoader(() => {
-  initHero(); // 4 — hero animations only fire after loader exits
+// ✅ correct
+export class Hero {
+  prep() { ... }   // public
+  init() { ... }   // public
+  #animateNav() { ... }  // private
+}
+
+// ❌ wrong
+export function initHero() { ... }
+export function prepHero() { ... }
+```
+
+**Rules:**
+
+- Public API: only `init()`, `prep()`, `destroy()` (and `static init()` where stateless).
+- All helpers are `#privateMethod()` — never exported, never underscore-prefixed.
+- State lives in `#privateFields`, never in module-level variables.
+- Constants shared across methods are `static #CONSTANT` on the class.
+
+---
+
+## Boot sequence — `main.js`
+
+The order is strict and must not be changed:
+
+```js
+GsapSetup.init(); // 1 — register plugins before anything touches GSAP
+
+const hero = new Hero();
+hero.prep(); // 2 — set hero elements to hidden (prevents flash)
+
+new Cursor().init(); // 3 — cursor active immediately
+new NavMenu().init(); // 4 — mobile nav ready
+new I18n().init(); // 5 — translate DOM before anything is visible
+new LenisScroll().init(); // 6 — smooth scroll running before animations
+
+new Loader().init(() => {
+  hero.init(); // 7 — hero animations only fire after loader exits
 });
 ```
 
-**Rule:** `prepHero()` must always be called before `initLoader()`. If you add a new section, create a matching `prepSection()` and call it in the same pre-loader block.
+**Rule:** `hero.prep()` must always be called before `new Loader().init()`. If you add a new section, create a `SectionName` class with `prep()` / `init()` and call `prep()` in the same pre-loader block.
 
 ---
 
 ## Animation modules — `js/animations/`
 
-Each section gets its own file. Follow this structure exactly:
+Each section gets its own file with one class. Follow this structure exactly:
 
 ```js
 // animations/example.js
 
-/**
- * Sets all elements to their hidden initial states.
- * Call BEFORE initLoader() in main.js.
- */
-export function prepExample() {
-  gsap.set("#example-el", { opacity: 0, y: 30 });
-}
+export class Example {
+  /** Sets elements to hidden initial states. Call before Loader.init(). */
+  prep() {
+    gsap.set("#example-el", { opacity: 0, y: 30 });
+  }
 
-/**
- * Runs the reveal animations.
- * Call INSIDE the initLoader() onComplete callback.
- */
-export function initExample() {
-  _animateSomething();
-}
+  /** Runs the reveal animations. Call inside the Loader onComplete callback. */
+  init() {
+    this.#animateSomething();
+  }
 
-// Private helpers — prefixed with underscore, not exported
-function _animateSomething() {
-  gsap.to("#example-el", { opacity: 1, y: 0, duration: 1, ease: "expo.out" });
+  #animateSomething() {
+    gsap.to("#example-el", { opacity: 1, y: 0, duration: 1, ease: "expo.out" });
+  }
 }
 ```
 
 **Rules:**
 
-- Exports are only `prepX()` and `initX()` — everything else is private (`_camelCase`).
-- Never use `delay:` on entry animations. All tweens start at `t = 0`; visual hierarchy comes from `stagger` or sequencing.
+- Only `prep()` and `init()` are public — everything else is `#private`.
+- Never use `delay:` on entry animations. All tweens start at `t = 0`; visual hierarchy comes from `stagger` or timeline sequencing.
 - Never put two separate `gsap.to()` calls on the same property of the same element. Use `gsap.timeline()` to chain them.
-- For infinite idle animations after a reveal, always chain with `.to()` on the same timeline and use `rotation: "+=360"` (relative) not `rotate: 360` (absolute).
+- For infinite idle animations after a reveal, always chain with `.to()` on the same timeline using `rotation: "+=360"` (relative), not `rotate: 360` (absolute).
 - Always pass actual DOM nodes to `Draggable.create()` — never string selectors.
 
 ---
@@ -148,10 +176,12 @@ export const en = {
 
 ## Naming
 
-| Thing                    | Pattern               | Example                            |
-| ------------------------ | --------------------- | ---------------------------------- |
-| Animation module export  | `initX()` / `prepX()` | `initHero`, `prepHero`             |
-| Private animation helper | `_verbNoun()`         | `_animateNav`, `_parallaxOnScroll` |
-| HTML id for GSAP targets | `section-element`     | `hero-crosshair`, `hero-bg`        |
-| BEM component class      | `block__element`      | `hero__title-line`, `loader__bar`  |
-| Locale key               | `section.element`     | `hero.eyebrow`, `nav.login`        |
+| Thing                    | Pattern               | Example                                |
+| ------------------------ | --------------------- | -------------------------------------- |
+| Module class             | `PascalCase`          | `Hero`, `LenisScroll`, `NavMenu`       |
+| Public method            | `camelCase`           | `init()`, `prep()`, `destroy()`        |
+| Private method / field   | `#camelCase`          | `#animateNav()`, `#lenis`, `#isOpen`   |
+| Static class constant    | `static #UPPER_SNAKE` | `static #HOVER_SEL`, `static #DEFAULT` |
+| HTML id for GSAP targets | `section-element`     | `hero-crosshair`, `hero-bg`, `cur-dot` |
+| BEM component class      | `block__element`      | `hero__title-line`, `loader__bar`      |
+| Locale key               | `section.element`     | `hero.eyebrow`, `nav.login`            |
