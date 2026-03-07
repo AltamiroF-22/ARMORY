@@ -1,0 +1,254 @@
+/* ============================================================
+   INPUT.CSS — Tailwind v4 entry point
+   ARMORY Tactical Store
+   All design tokens declared here via @theme.
+   GSAP animation-critical rules kept in @layer components.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ============================================================
+   THEME — maps to Tailwind utilities
+   bg-black → --color-black
+   text-gold → --color-gold
+   font-display → --font-display
+   etc.
+   ============================================================ */
+@theme {
+  /* Colors */
+  --color-black: #080808;
+  --color-dark: #111111;
+  --color-mid: #1c1c1c;
+  --color-surface: #242424;
+  --color-white: #f0ede8;
+  --color-gold: #c8a96e;
+  --color-gold-dim: #8a7249;
+  --color-red: #b8282a;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Easing (used as CSS vars by GSAP, referenced via var()) */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-expo: cubic-bezier(0.7, 0, 0.84, 0);
+}
+
+/* ============================================================
+   BASE OVERRIDES
+   ============================================================ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: auto;
+  } /* Lenis handles smooth scroll */
+
+  body {
+    @apply bg-black text-white font-body antialiased overflow-x-hidden;
+  }
+
+  a {
+    @apply no-underline text-inherit;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+  img,
+  video,
+  svg {
+    @apply block max-w-full;
+  }
+
+  /* Fluid type scale as CSS custom props (used by GSAP modules) */
+  :root {
+    --fs-display: clamp(3rem, 10vw, 13rem);
+    --fs-h1: clamp(2.25rem, 5vw, 6rem);
+    --fs-h2: clamp(1.75rem, 3.5vw, 4rem);
+    --fs-h3: clamp(1.35rem, 2.4vw, 2.5rem);
+    --fs-h4: clamp(1.1rem, 1.8vw, 1.75rem);
+    --fs-body: clamp(0.9rem, 1.1vw, 1.05rem);
+    --fs-small: clamp(0.75rem, 0.85vw, 0.875rem);
+    --fs-label: clamp(0.6rem, 0.75vw, 0.8rem);
+
+    /* Spacing referenced by JS */
+    --space-xs: 4px;
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 32px;
+    --space-xl: 64px;
+    --space-2xl: 128px;
+  }
+}
+
+/* ============================================================
+   COMPONENTS — only rules Tailwind utilities can't express
+   (GSAP initial transform states, keyframes, mix-blend-mode
+    combos, nth-child selectors, etc.)
+   ============================================================ */
+@layer components {
+  /* ── Loader ─────────────────────────────────────────────── */
+
+  .loader__bg {
+    @apply absolute inset-0 bg-black;
+    transform-origin: top;
+  }
+
+  .loader__counter {
+    @apply absolute top-8 right-8 font-display text-gold leading-none;
+    font-size: clamp(3rem, 8vw, 7rem);
+    letter-spacing: 0.02em;
+    mix-blend-mode: difference;
+  }
+
+  .loader__percent {
+    @apply text-gold-dim;
+    font-size: 0.35em;
+    vertical-align: super;
+    margin-left: 2px;
+  }
+
+  .loader__brand {
+    @apply font-display text-white leading-none select-none overflow-hidden;
+    font-size: clamp(5rem, 18vw, 18rem);
+    letter-spacing: -0.02em;
+  }
+
+  .loader__tagline {
+    @apply absolute font-body text-gold-dim uppercase tracking-[0.3em] opacity-0;
+    bottom: calc(var(--space-xl) + 20px);
+    left: var(--space-l);
+    font-size: 0.75rem;
+  }
+
+  .loader__bar-wrap {
+    @apply absolute bottom-8 left-8 right-8 h-px bg-white/[.08] overflow-hidden;
+  }
+
+  .loader__bar {
+    @apply h-full w-0 bg-gold;
+    transform-origin: left;
+  }
+
+  /* ── Nav ─────────────────────────────────────────────────── */
+
+  /* mix-blend-difference must stay — can't compose in HTML */
+  .nav {
+    mix-blend-mode: difference;
+  }
+
+  /* ── Hero background ─────────────────────────────────────── */
+
+  .hero__bg-overlay {
+    @apply absolute inset-0 z-[1];
+    background: linear-gradient(
+      105deg,
+      rgba(8, 8, 8, 0.95) 0%,
+      rgba(8, 8, 8, 0.7) 50%,
+      rgba(8, 8, 8, 0.3) 100%
+    );
+  }
+
+  .hero__bg-img {
+    @apply absolute bg-center bg-cover;
+    inset: -10%;
+    background-image:
+      radial-gradient(
+        ellipse at 70% 50%,
+        rgba(200, 169, 110, 0.08) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        rgba(184, 40, 42, 0.07) 0%,
+        transparent 50%
+      ),
+      url("https://images.unsplash.com/photo-1595590424283-b8f17842773f?w=1800&auto=format&fit=crop&q=80");
+    filter: grayscale(60%) contrast(1.1);
+    will-change: transform;
+  }
+
+  /* ── Hero title lines (GSAP clip mask) ───────────────────── */
+
+  .hero__title-line {
+    @apply block;
+    will-change: transform;
+  }
+
+  /* Hollow/outline variant */
+  .hero__title-line[data-line="2"] {
+    -webkit-text-stroke: 1px rgba(240, 237, 232, 0.25);
+    @apply text-transparent;
+  }
+
+  /* ── Scroll indicator animation ──────────────────────────── */
+
+  .hero__scroll-fill {
+    @apply h-full w-full bg-gold;
+    transform: translateX(-100%);
+    animation: scrollSlide 2s var(--ease-out-expo) 0.5s infinite;
+  }
+
+  /* ── Language switcher ───────────────────────────────────── */
+
+  .lang-chevron {
+    transition: transform 0.25s var(--ease-out-expo);
+  }
+
+  #lang-btn[aria-expanded="true"] .lang-chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-panel {
+    position: fixed;
+    width: 164px;
+    background: #0e0e0e;
+    border: 1px solid rgba(200, 169, 110, 0.18);
+    padding: 6px 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.2s var(--ease-out-expo),
+      transform 0.2s var(--ease-out-expo);
+    z-index: 200;
+  }
+
+  .lang-panel.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 16px;
+    font-family: var(--font-body);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(240, 237, 232, 0.45);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
+  }
+
+  .lang-option:hover,
+  .lang-option.is-active {
+    color: #c8a96e;
+    background: rgba(200, 169, 110, 0.06);
+  }
+}

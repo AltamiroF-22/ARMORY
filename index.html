@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARMORY — Tactical Store</title>
+
+    <link rel="icon" href="data:," />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS: Tailwind output (tokens + utilities + components) -->
+    <link rel="stylesheet" href="css/output.css" />
+  </head>
+  <body class="bg-black text-white font-body antialiased overflow-x-hidden">
+    <!-- ─────────────────────────────────────────────
+         LOADING SCREEN
+    ───────────────────────────────────────────── -->
+    <div
+      id="loader"
+      class="fixed inset-0 z-[1000] flex items-center justify-center overflow-hidden pointer-events-none"
+    >
+      <div class="loader__bg"></div>
+
+      <!-- counter -->
+      <div class="loader__counter">
+        <span id="loader-count">0</span>
+        <span class="loader__percent">%</span>
+      </div>
+
+      <!-- brand -->
+      <div class="loader__brand">
+        <span data-split="brand">ARMORY</span>
+      </div>
+
+      <!-- tagline -->
+      <p class="loader__tagline">Precision. Power. Purpose.</p>
+
+      <!-- progress bar -->
+      <div class="loader__bar-wrap">
+        <div class="loader__bar"></div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────
+         MAIN CONTENT
+    ───────────────────────────────────────────── -->
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        <!-- NAV -->
+        <nav
+          class="nav fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 py-4 opacity-0"
+        >
+          <div class="font-display text-2xl tracking-widest text-white">
+            ARMORY
+          </div>
+
+          <ul class="flex gap-8">
+            <li>
+              <a
+                href="#"
+                data-i18n="nav.arsenal"
+                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+              >
+                Arsenal
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                data-i18n="nav.ammo"
+                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+              >
+                Ammo
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                data-i18n="nav.accessories"
+                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+              >
+                Accessories</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                data-i18n="nav.contact"
+                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+
+          <div class="flex items-center gap-4">
+            <a
+              href="#"
+              data-i18n="nav.login"
+              class="text-[0.7rem] tracking-[0.2em] uppercase text-gold border border-gold px-5 py-2 hover:bg-gold hover:text-black transition-colors duration-300"
+            >
+              Login
+            </a>
+
+            <!-- Language switcher -->
+            <div id="lang-switcher" class="relative">
+              <button
+                id="lang-btn"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                class="flex items-center gap-1.5 text-[0.7rem] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300 select-none"
+              >
+                <span id="lang-flag">🇺🇸</span>
+                <span id="lang-label">EN</span>
+                <svg
+                  class="w-2.5 h-2.5 lang-chevron"
+                  viewBox="0 0 10 6"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div id="lang-panel" role="listbox" class="lang-panel">
+                <button class="lang-option" data-lang="en" role="option">
+                  <span>🇺🇸</span><span>English</span>
+                </button>
+                <button class="lang-option" data-lang="pt" role="option">
+                  <span>🇧🇷</span><span>Português</span>
+                </button>
+                <button class="lang-option" data-lang="de" role="option">
+                  <span>🇩🇪</span><span>Deutsch</span>
+                </button>
+                <button class="lang-option" data-lang="jp" role="option">
+                  <span>🇯🇵</span><span>日本語</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- HERO -->
+        <section
+          class="relative w-full h-screen min-h-[700px] flex items-center bg-black"
+          id="hero"
+        >
+          <!-- background layers -->
+          <div class="absolute inset-0 overflow-hidden">
+            <div class="hero__bg-overlay"></div>
+            <div class="hero__bg-img" id="hero-bg"></div>
+
+            <!-- decorative crosshair -->
+            <svg
+              class="absolute right-[8%] top-1/2 w-[clamp(200px,30vw,450px)] h-auto z-[2]"
+              id="hero-crosshair"
+              viewBox="0 0 200 200"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="100"
+                cy="100"
+                r="80"
+                stroke="#c8a96e"
+                stroke-width="0.5"
+                stroke-dasharray="4 8"
+              />
+              <circle
+                cx="100"
+                cy="100"
+                r="50"
+                stroke="#c8a96e"
+                stroke-width="0.8"
+              />
+              <line
+                x1="100"
+                y1="10"
+                x2="100"
+                y2="50"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="100"
+                y1="150"
+                x2="100"
+                y2="190"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="10"
+                y1="100"
+                x2="50"
+                y2="100"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="150"
+                y1="100"
+                x2="190"
+                y2="100"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <circle cx="100" cy="100" r="3" fill="#c8a96e" />
+            </svg>
+          </div>
+
+          <!-- content -->
+          <div class="relative z-10 pt-20 px-8 max-w-4xl w-full">
+            <!-- eyebrow -->
+            <div
+              id="hero-eyebrow"
+              class="flex items-center gap-4 mb-4 opacity-0"
+            >
+              <span class="block w-10 h-px bg-gold shrink-0"></span>
+              <span
+                data-i18n="hero.eyebrow"
+                class="text-[0.7rem] tracking-[0.3em] uppercase text-gold"
+                >Limited Edition 2026</span
+              >
+            </div>
+
+            <!-- headline -->
+            <h1
+              class="flex flex-col font-display text-[clamp(2rem,7vw,8.5rem)] leading-[0.88] tracking-[-0.02em] text-white mb-4"
+              id="hero-title"
+            >
+              <span class="block overflow-hidden leading-[0.88]"
+                ><span
+                  class="hero__title-line"
+                  data-i18n="hero.line1"
+                  data-line="1"
+                  >FORCE</span
+                ></span
+              >
+              <span class="block overflow-hidden leading-[0.88]"
+                ><span
+                  class="hero__title-line"
+                  data-i18n="hero.line2"
+                  data-line="2"
+                  >WITHOUT</span
+                ></span
+              >
+              <span class="block overflow-hidden leading-[0.88]"
+                ><span
+                  class="hero__title-line"
+                  data-i18n="hero.line3"
+                  data-line="3"
+                  >LIMITS</span
+                ></span
+              >
+            </h1>
+
+            <!-- subtitle -->
+            <p
+              id="hero-sub"
+              data-i18n="hero.sub"
+              class="text-[clamp(0.8rem,1.3vw,1rem)] leading-[1.65] text-white/55 max-w-[400px] opacity-0 mb-4"
+            >
+              High-performance tactical equipment for those who refuse second
+              place.
+            </p>
+
+            <!-- CTAs -->
+            <div id="hero-actions" class="flex gap-4 opacity-0">
+              <a
+                href="#"
+                data-i18n="hero.cta1"
+                class="inline-flex items-center text-xs tracking-[0.2em] uppercase px-9 py-4 bg-gold text-black font-bold transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(200,169,110,0.35)]"
+                >View Arsenal</a
+              >
+              <a
+                href="#"
+                data-i18n="hero.cta2"
+                class="inline-flex items-center text-xs tracking-[0.2em] uppercase px-9 py-4 border border-white/20 text-white transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-white"
+                >Learn More</a
+              >
+            </div>
+          </div>
+
+          <!-- scroll indicator -->
+          <div
+            id="hero-scroll"
+            class="absolute bottom-8 left-8 z-10 flex items-center gap-4 opacity-0"
+          >
+            <span
+              data-i18n="hero.scroll"
+              class="text-[0.65rem] tracking-[0.3em] uppercase text-gold-dim"
+              >scroll</span
+            >
+            <div class="w-[60px] h-px bg-gold/20 overflow-hidden">
+              <div class="hero__scroll-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PLACEHOLDER SECTIONS -->
+        <section
+          class="w-full h-screen flex items-center justify-center border-t border-white/[.08] bg-[#0a0a0a]"
+        >
+          <h2
+            data-i18n="sections.arsenal"
+            class="font-display text-[clamp(3rem,8vw,8rem)] tracking-[0.05em] text-white/[.08] uppercase"
+          >
+            Arsenal
+          </h2>
+        </section>
+
+        <section
+          class="w-full h-screen flex items-center justify-center border-t border-white/[.08] bg-[#111]"
+        >
+          <h2
+            data-i18n="sections.ammo"
+            class="font-display text-[clamp(3rem,8vw,8rem)] tracking-[0.05em] text-white/[.08] uppercase"
+          >
+            Ammo
+          </h2>
+        </section>
+      </div>
+      <!-- /smooth-content -->
+    </div>
+    <!-- /smooth-wrapper -->
+
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+    <!-- GSAP CDN (free plugins only) -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+
+    <script src="js/main.js" type="module"></script>
+  </body>
+</html>
