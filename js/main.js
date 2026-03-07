@@ -2,14 +2,7 @@
    main.js — Entry point
    Responsibility : orchestrate module imports and boot sequence
    ============================================================
-
-   Module tree
-   ├─ core/gsap.setup.js      → registers GSAP plugins
-   ├─ core/lenis.js           → smooth scroll
-   ├─ animations/loader.js   → loading screen
-   ├─ animations/hero.js     → hero reveal + interactions
-   └─ lib/SplitText.js       → (used internally by loader + hero)
-   ============================================================ */
+*/
 
 import "./core/gsap.setup.js";
 import { initLenis } from "./core/lenis.js";
