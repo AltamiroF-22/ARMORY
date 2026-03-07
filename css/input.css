@@ -251,4 +251,82 @@
     color: #c8a96e;
     background: rgba(200, 169, 110, 0.06);
   }
+
+  /* ── Custom cursor: tactical targeting brackets ────────── */
+
+  @media (hover: hover) {
+    * {
+      cursor: none !important;
+    }
+
+    /* Center dot — snaps directly to mouse */
+    #cur-dot {
+      position: fixed;
+      width: 3px;
+      height: 3px;
+      background: #ffffff;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      will-change: left, top;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Brackets container — lerps behind */
+    #cur-brackets {
+      position: fixed;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      will-change: left, top;
+      transition:
+        width 0.35s var(--ease-out-expo),
+        height 0.35s var(--ease-out-expo);
+    }
+
+    /* Each corner bracket arm */
+    .cur-br {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-color: #ffffff;
+      border-style: solid;
+    }
+
+    .cur-br--tl {
+      top: 0;
+      left: 0;
+      border-width: 1.5px 0 0 1.5px;
+    }
+    .cur-br--tr {
+      top: 0;
+      right: 0;
+      border-width: 1.5px 1.5px 0 0;
+    }
+    .cur-br--bl {
+      bottom: 0;
+      left: 0;
+      border-width: 0 0 1.5px 1.5px;
+    }
+    .cur-br--br {
+      bottom: 0;
+      right: 0;
+      border-width: 0 1.5px 1.5px 0;
+    }
+
+    /* Hover — brackets close in, dot hides */
+    body.cur-hover #cur-dot {
+      opacity: 0;
+    }
+
+    body.cur-hover #cur-brackets {
+      width: 22px;
+      height: 22px;
+    }
+  }
 }

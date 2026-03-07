@@ -4,16 +4,25 @@
    ============================================================
 */
 
-import "./core/gsap.setup.js";
-import { initLenis } from "./core/lenis.js";
-import { initLoader } from "./animations/loader.js";
-import { initHero, prepHero } from "./animations/hero.js";
-import { initI18n } from "./core/i18n.js";
+import { GsapSetup } from "./core/gsap.setup.js";
+import { LenisScroll } from "./core/lenis.js";
+import { I18n } from "./core/i18n.js";
+import { Loader } from "./animations/loader.js";
+import { Hero } from "./animations/hero.js";
+import { Cursor } from "./core/cursor.js";
 
-initI18n();
-initLenis();
-prepHero();
+GsapSetup.init();
 
-initLoader(() => {
-  initHero();
+const hero = new Hero();
+
+hero.prep();
+
+new Cursor().init();
+
+new I18n().init();
+
+new LenisScroll().init();
+
+new Loader().init(() => {
+  hero.init();
 });
