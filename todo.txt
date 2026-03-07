@@ -1,0 +1,4 @@
+[] to do | [x] done
+
+[] curso customizado de mira com invert de color 
+[] refatorar .js para ser orientado a obj somente class (SRP, DRY, SOLID)
