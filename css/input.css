@@ -68,14 +68,15 @@
 
   /* Fluid type scale as CSS custom props (used by GSAP modules) */
   :root {
-    --fs-display: clamp(3rem, 10vw, 13rem);
-    --fs-h1: clamp(2.25rem, 5vw, 6rem);
-    --fs-h2: clamp(1.75rem, 3.5vw, 4rem);
-    --fs-h3: clamp(1.35rem, 2.4vw, 2.5rem);
-    --fs-h4: clamp(1.1rem, 1.8vw, 1.75rem);
-    --fs-body: clamp(0.9rem, 1.1vw, 1.05rem);
-    --fs-small: clamp(0.75rem, 0.85vw, 0.875rem);
-    --fs-label: clamp(0.6rem, 0.75vw, 0.8rem);
+    /* HD (1920px) → QHD (2560px) → 4K (3840px) */
+    --fs-display: clamp(3rem, 10vw, 16rem);
+    --fs-h1: clamp(2.25rem, 5vw, 8rem);
+    --fs-h2: clamp(1.75rem, 3.5vw, 5rem);
+    --fs-h3: clamp(1.35rem, 2.4vw, 3.25rem);
+    --fs-h4: clamp(1.1rem, 1.8vw, 2.25rem);
+    --fs-body: clamp(0.9rem, 1.1vw, 1.2rem);
+    --fs-small: clamp(0.75rem, 0.85vw, 1rem);
+    --fs-label: clamp(0.6rem, 0.75vw, 0.9rem);
 
     /* Spacing referenced by JS */
     --space-xs: 4px;

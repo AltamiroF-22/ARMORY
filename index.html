@@ -18,10 +18,9 @@
     <!-- CSS: Tailwind output (tokens + utilities + components) -->
     <link rel="stylesheet" href="css/output.css" />
 
-        <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="apple-touch-icon" href="favicon.png" />
-    
   </head>
   <body class="bg-black text-white font-body antialiased overflow-x-hidden">
     <!-- Custom cursor: tactical targeting brackets -->
@@ -67,102 +66,105 @@
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <!-- NAV -->
-        <nav
-          class="nav fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-8 py-4 opacity-0"
-        >
-          <div class="font-display text-2xl tracking-widest text-white">
-            ARMORY
-          </div>
+        <nav class="nav fixed top-0 left-0 right-0 z-[100] py-4 opacity-0">
+          <div
+            class="max-w-[1700px] mx-auto w-full flex items-center justify-between px-8"
+          >
+            <div class="font-display text-2xl tracking-widest text-white">
+              ARMORY
+            </div>
 
-          <ul class="flex gap-8">
-            <li>
-              <a
-                href="#"
-                data-i18n="nav.arsenal"
-                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
-              >
-                Arsenal
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                data-i18n="nav.ammo"
-                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
-              >
-                Ammo
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                data-i18n="nav.accessories"
-                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
-              >
-                Accessories</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                data-i18n="nav.contact"
-                class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-
-          <div class="flex items-center gap-4">
-            <a
-              href="#"
-              data-i18n="nav.login"
-              class="text-[0.7rem] tracking-[0.2em] uppercase text-gold border border-gold px-5 py-2 hover:bg-gold hover:text-black transition-colors duration-300"
-            >
-              Login
-            </a>
-
-            <!-- Language switcher -->
-            <div id="lang-switcher" class="relative">
-              <button
-                id="lang-btn"
-                aria-expanded="false"
-                aria-haspopup="listbox"
-                class="flex items-center gap-1.5 text-[0.7rem] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300 select-none"
-              >
-                <span id="lang-flag">🇺🇸</span>
-                <span id="lang-label">EN</span>
-                <svg
-                  class="w-2.5 h-2.5 lang-chevron"
-                  viewBox="0 0 10 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <ul class="flex gap-8">
+              <li>
+                <a
+                  href="#"
+                  data-i18n="nav.arsenal"
+                  class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
                 >
-                  <path
-                    d="M1 1L5 5L9 1"
-                    stroke="currentColor"
-                    stroke-width="1.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </button>
-              <div id="lang-panel" role="listbox" class="lang-panel">
-                <button class="lang-option" data-lang="en" role="option">
-                  <span>🇺🇸</span><span>English</span>
+                  Arsenal
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-i18n="nav.ammo"
+                  class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+                >
+                  Ammo
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-i18n="nav.accessories"
+                  class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+                >
+                  Accessories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-i18n="nav.contact"
+                  class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+
+            <div class="flex items-center gap-4">
+              <a
+                href="#"
+                data-i18n="nav.login"
+                class="text-[0.7rem] tracking-[0.2em] uppercase text-gold border border-gold px-5 py-2 hover:bg-gold hover:text-black transition-colors duration-300"
+              >
+                Login
+              </a>
+
+              <!-- Language switcher -->
+              <div id="lang-switcher" class="relative">
+                <button
+                  id="lang-btn"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  class="flex items-center gap-1.5 text-[0.7rem] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300 select-none"
+                >
+                  <span id="lang-flag">🇺🇸</span>
+                  <span id="lang-label">EN</span>
+                  <svg
+                    class="w-2.5 h-2.5 lang-chevron"
+                    viewBox="0 0 10 6"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 1L5 5L9 1"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
                 </button>
-                <button class="lang-option" data-lang="pt" role="option">
-                  <span>🇧🇷</span><span>Português</span>
-                </button>
-                <button class="lang-option" data-lang="de" role="option">
-                  <span>🇩🇪</span><span>Deutsch</span>
-                </button>
-                <button class="lang-option" data-lang="jp" role="option">
-                  <span>🇯🇵</span><span>日本語</span>
-                </button>
+                <div id="lang-panel" role="listbox" class="lang-panel">
+                  <button class="lang-option" data-lang="en" role="option">
+                    <span>🇺🇸</span><span>English</span>
+                  </button>
+                  <button class="lang-option" data-lang="pt" role="option">
+                    <span>🇧🇷</span><span>Português</span>
+                  </button>
+                  <button class="lang-option" data-lang="de" role="option">
+                    <span>🇩🇪</span><span>Deutsch</span>
+                  </button>
+                  <button class="lang-option" data-lang="jp" role="option">
+                    <span>🇯🇵</span><span>日本語</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+          <!-- /nav-inner -->
         </nav>
 
         <!-- HERO -->
@@ -235,11 +237,11 @@
           </div>
 
           <!-- content -->
-          <div class="relative z-10 pt-20 px-8 max-w-4xl w-full">
+          <div class="relative z-10 pt-20 px-12 max-w-[1000px] w-full">
             <!-- eyebrow -->
             <div
               id="hero-eyebrow"
-              class="flex items-center gap-4 mb-4 opacity-0"
+              class="flex items-center gap-4 mb-8 opacity-0"
             >
               <span class="block w-10 h-px bg-gold shrink-0"></span>
               <span
@@ -252,7 +254,7 @@
 
             <!-- headline -->
             <h1
-              class="flex flex-col font-display text-[clamp(2rem,7vw,8.5rem)] leading-[0.88] tracking-[-0.02em] text-white mb-4"
+              class="flex flex-col font-display text-[clamp(4rem,9vw,12rem)] leading-[0.88] tracking-[-0.02em] text-white mb-8"
               id="hero-title"
             >
               <span class="block overflow-hidden leading-[0.88]">
@@ -264,7 +266,7 @@
                   FORCE
                 </span>
               </span>
-              <span class="block overflow-hidden leading-[0.88]"></span>
+              <span class="block overflow-hidden leading-[0.88]">
                 <span
                   class="hero__title-line"
                   data-i18n="hero.line2"
@@ -273,22 +275,22 @@
                   WITHOUT
                 </span>
               </span>
-              <span class="block overflow-hidden leading-[0.88]"> 
+              <span class="block overflow-hidden leading-[0.88]">
                 <span
                   class="hero__title-line"
                   data-i18n="hero.line3"
                   data-line="3"
-                  >
-                  LIMITS 
-                  </span>
-                 </span>
-              </h1>
+                >
+                  LIMITS
+                </span>
+              </span>
+            </h1>
 
             <!-- subtitle -->
             <p
               id="hero-sub"
               data-i18n="hero.sub"
-              class="text-[clamp(0.8rem,1.3vw,1rem)] leading-[1.65] text-white/55 max-w-[400px] opacity-0 mb-4"
+              class="text-[clamp(0.9rem,1.3vw,1.15rem)] leading-[1.75] text-white/55 max-w-[520px] opacity-0 mb-8 pb-4"
             >
               High-performance tactical equipment for those who refuse second
               place.
@@ -300,14 +302,16 @@
                 href="#"
                 data-i18n="hero.cta1"
                 class="inline-flex items-center text-xs tracking-[0.2em] uppercase px-9 py-4 bg-gold text-black font-bold transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(200,169,110,0.35)]"
-                >View Arsenal</a
               >
+                View Arsenal
+              </a>
               <a
                 href="#"
                 data-i18n="hero.cta2"
                 class="inline-flex items-center text-xs tracking-[0.2em] uppercase px-9 py-4 border border-white/20 text-white transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-white"
-                >Learn More</a
               >
+                Learn More
+              </a>
             </div>
           </div>
 
@@ -319,10 +323,9 @@
             <span
               data-i18n="hero.scroll"
               class="text-[0.65rem] tracking-[0.3em] uppercase text-gold-dim"
-              >
-              scroll
-              </span
             >
+              scroll
+            </span>
             <div class="w-[60px] h-px bg-gold/20 overflow-hidden">
               <div class="hero__scroll-fill"></div>
             </div>
