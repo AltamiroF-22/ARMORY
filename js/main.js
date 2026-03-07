@@ -10,6 +10,7 @@ import { I18n } from "./core/i18n.js";
 import { Loader } from "./animations/loader.js";
 import { Hero } from "./animations/hero.js";
 import { Cursor } from "./core/cursor.js";
+import { NavMenu } from "./core/nav.js";
 
 GsapSetup.init();
 
@@ -18,6 +19,8 @@ const hero = new Hero();
 hero.prep();
 
 new Cursor().init();
+
+new NavMenu().init();
 
 new I18n().init();
 

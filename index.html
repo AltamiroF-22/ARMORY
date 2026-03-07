@@ -31,6 +31,59 @@
       <span class="cur-br cur-br--bl"></span>
       <span class="cur-br cur-br--br"></span>
     </div>
+
+    <!-- ─────────────────────────────────────────────
+         MOBILE NAV OVERLAY
+    ───────────────────────────────────────────── -->
+    <div id="nav-overlay" aria-hidden="true">
+      <div class="nav-overlay__inner">
+        <ul class="nav-overlay__list">
+          <li>
+            <a href="#" class="nav-overlay__link">
+              <span class="nav-overlay__num">01</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.arsenal"
+                  >Arsenal</span
+                >
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-overlay__link">
+              <span class="nav-overlay__num">02</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.ammo">Ammo</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-overlay__link">
+              <span class="nav-overlay__num">03</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.accessories"
+                  >Accessories</span
+                >
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-overlay__link">
+              <span class="nav-overlay__num">04</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.contact"
+                  >Contact</span
+                >
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="nav-overlay__bottom">
+          <a href="#" data-i18n="nav.login" class="nav-overlay__cta">Login</a>
+          <p class="nav-overlay__tag">ARMORY &copy; 2026</p>
+        </div>
+      </div>
+    </div>
+
     <!-- ─────────────────────────────────────────────
          LOADING SCREEN
     ───────────────────────────────────────────── -->
@@ -68,13 +121,13 @@
         <!-- NAV -->
         <nav class="nav fixed top-0 left-0 right-0 z-[100] py-4 opacity-0">
           <div
-            class="max-w-[1700px] mx-auto w-full flex items-center justify-between px-8"
+            class="max-w-[1700px] mx-auto w-full flex items-center justify-between px-6 lg:px-8"
           >
             <div class="font-display text-2xl tracking-widest text-white">
               ARMORY
             </div>
 
-            <ul class="flex gap-8">
+            <ul class="hidden lg:flex gap-8">
               <li>
                 <a
                   href="#"
@@ -113,7 +166,7 @@
               </li>
             </ul>
 
-            <div class="flex items-center gap-4">
+            <div class="hidden lg:flex items-center gap-4">
               <a
                 href="#"
                 data-i18n="nav.login"
@@ -163,6 +216,13 @@
                 </div>
               </div>
             </div>
+
+            <!-- Mobile burger -->
+            <button id="nav-burger" aria-expanded="false" aria-label="Menu">
+              <span class="nav-burger__bar"></span>
+              <span class="nav-burger__bar"></span>
+              <span class="nav-burger__bar"></span>
+            </button>
           </div>
           <!-- /nav-inner -->
         </nav>
@@ -241,7 +301,7 @@
             <!-- eyebrow -->
             <div
               id="hero-eyebrow"
-              class="flex items-center gap-4 mb-8 opacity-0"
+              class="flex items-center gap-4 mb-6 opacity-0"
             >
               <span class="block w-10 h-px bg-gold shrink-0"></span>
               <span
@@ -254,7 +314,7 @@
 
             <!-- headline -->
             <h1
-              class="flex flex-col font-display text-[clamp(4rem,9vw,12rem)] leading-[0.88] tracking-[-0.02em] text-white mb-8"
+              class="flex flex-col font-display text-[clamp(3.2rem,9vw,12rem)] leading-[0.88] tracking-[-0.02em] text-white mb-6"
               id="hero-title"
             >
               <span class="block overflow-hidden leading-[0.88]">
@@ -290,7 +350,7 @@
             <p
               id="hero-sub"
               data-i18n="hero.sub"
-              class="text-[clamp(0.9rem,1.3vw,1.15rem)] leading-[1.75] text-white/55 max-w-[520px] opacity-0 mb-8 pb-4"
+              class="text-[clamp(0.88rem,1.3vw,1.1rem)] leading-[1.7] text-white/55 max-w-[480px] opacity-0 mb-15"
             >
               High-performance tactical equipment for those who refuse second
               place.
