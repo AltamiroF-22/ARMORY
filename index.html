@@ -3,7 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ARMORY — Tactical Store</title>
+    <title>ARMORY — Premium Tactical Store | Limited Edition 2026</title>
+
+    <!-- ── SEO ─────────────────────────────────────────────────────── -->
+    <meta
+      name="description"
+      content="ARMORY is a premium tactical equipment store offering limited-edition firearms, high-performance ammunition, and operator-grade accessories. Engineered for those who refuse second place."
+    />
+    <meta
+      name="keywords"
+      content="tactical store, tactical equipment, premium firearms, operator gear, tactical ammunition, limited edition 2026, ARMORY"
+    />
+    <meta name="author" content="ARMORY" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://armory.store/" />
+
+    <!-- ── Open Graph (Facebook / LinkedIn / WhatsApp) ──────────────── -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ARMORY" />
+    <meta
+      property="og:title"
+      content="ARMORY — Premium Tactical Store | Limited Edition 2026"
+    />
+    <meta
+      property="og:description"
+      content="High-performance tactical equipment for those who refuse second place. Limited edition 2026 collection now available."
+    />
+    <meta property="og:url" content="https://armory.store/" />
+    <meta property="og:image" content="https://armory.store/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="ARMORY — Premium Tactical Store" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ── Twitter / X Card ─────────────────────────────────────────── -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@armorystore" />
+    <meta name="twitter:creator" content="@armorystore" />
+    <meta
+      name="twitter:title"
+      content="ARMORY — Premium Tactical Store | Limited Edition 2026"
+    />
+    <meta
+      name="twitter:description"
+      content="High-performance tactical equipment for those who refuse second place. Limited edition 2026 collection now available."
+    />
+    <meta name="twitter:image" content="https://armory.store/og-image.jpg" />
+    <meta name="twitter:image:alt" content="ARMORY — Premium Tactical Store" />
+
+    <!-- ── Schema.org JSON-LD (Google rich results) ─────────────────── -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "ARMORY",
+        "description": "Premium tactical equipment store offering limited-edition firearms, high-performance ammunition, and operator-grade accessories.",
+        "url": "https://armory.store/",
+        "logo": "https://armory.store/favicon.png",
+        "image": "https://armory.store/og-image.jpg",
+        "priceRange": "$$$",
+        "currenciesAccepted": "USD",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "sameAs": [
+          "https://twitter.com/armorystore",
+          "https://instagram.com/armorystore"
+        ]
+      }
+    </script>
 
     <link rel="icon" href="data:," />
 
@@ -87,7 +153,13 @@
           </li>
         </ul>
         <div class="nav-overlay__bottom">
-          <a href="#" data-i18n="nav.login" data-auth-open="login" class="nav-overlay__cta">Login</a>
+          <a
+            href="#"
+            data-i18n="nav.login"
+            data-auth-open="login"
+            class="nav-overlay__cta"
+            >Login</a
+          >
           <!-- Theme toggle (mobile) -->
           <button
             id="theme-btn-mobile"
@@ -699,10 +771,16 @@
           <!-- LOGIN -->
           <div class="auth__form" id="auth-form-login">
             <header class="auth__form-head">
-              <span class="auth__eyebrow" data-i18n="auth.eyebrow_login">01 / ACCESS</span>
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_login"
+                >01 / ACCESS</span
+              >
               <h2 class="auth__title">
-                <span class="auth__title-line" data-i18n="auth.title_login_1">Welcome</span>
-                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_login_2"
+                <span class="auth__title-line" data-i18n="auth.title_login_1"
+                  >Welcome</span
+                >
+                <span
+                  class="auth__title-line auth__title-line--outline"
+                  data-i18n="auth.title_login_2"
                   >Back.</span
                 >
               </h2>
@@ -718,7 +796,12 @@
                   autocomplete="email"
                   required
                 />
-                <label for="l-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <label
+                  for="l-email"
+                  class="auth__label"
+                  data-i18n="auth.label_email"
+                  >Email address</label
+                >
                 <span class="auth__underline"></span>
               </div>
               <div class="auth__field">
@@ -730,7 +813,12 @@
                   autocomplete="current-password"
                   required
                 />
-                <label for="l-pass" class="auth__label" data-i18n="auth.label_password">Password</label>
+                <label
+                  for="l-pass"
+                  class="auth__label"
+                  data-i18n="auth.label_password"
+                  >Password</label
+                >
                 <span class="auth__underline"></span>
               </div>
               <p
@@ -740,7 +828,9 @@
                 aria-live="polite"
               ></p>
               <button type="submit" class="auth__submit">
-                <span class="auth__submit-text" data-i18n="auth.btn_enter">Enter</span>
+                <span class="auth__submit-text" data-i18n="auth.btn_enter"
+                  >Enter</span
+                >
                 <svg
                   class="auth__submit-arrow"
                   width="16"
@@ -783,10 +873,16 @@
           <!-- REGISTER -->
           <div class="auth__form" id="auth-form-register">
             <header class="auth__form-head">
-              <span class="auth__eyebrow" data-i18n="auth.eyebrow_register">02 / ENLIST</span>
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_register"
+                >02 / ENLIST</span
+              >
               <h2 class="auth__title">
-                <span class="auth__title-line" data-i18n="auth.title_reg_1">New</span>
-                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_reg_2"
+                <span class="auth__title-line" data-i18n="auth.title_reg_1"
+                  >New</span
+                >
+                <span
+                  class="auth__title-line auth__title-line--outline"
+                  data-i18n="auth.title_reg_2"
                   >Operator.</span
                 >
               </h2>
@@ -802,7 +898,12 @@
                   autocomplete="name"
                   required
                 />
-                <label for="r-name" class="auth__label" data-i18n="auth.label_name">Full name</label>
+                <label
+                  for="r-name"
+                  class="auth__label"
+                  data-i18n="auth.label_name"
+                  >Full name</label
+                >
                 <span class="auth__underline"></span>
               </div>
               <div class="auth__field">
@@ -814,7 +915,12 @@
                   autocomplete="email"
                   required
                 />
-                <label for="r-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <label
+                  for="r-email"
+                  class="auth__label"
+                  data-i18n="auth.label_email"
+                  >Email address</label
+                >
                 <span class="auth__underline"></span>
               </div>
               <div class="auth__field">
@@ -827,7 +933,10 @@
                   required
                   minlength="6"
                 />
-                <label for="r-pass" class="auth__label" data-i18n="auth.label_pass_hint"
+                <label
+                  for="r-pass"
+                  class="auth__label"
+                  data-i18n="auth.label_pass_hint"
                   >Password — min 6 chars</label
                 >
                 <span class="auth__underline"></span>
@@ -839,7 +948,9 @@
                 aria-live="polite"
               ></p>
               <button type="submit" class="auth__submit">
-                <span class="auth__submit-text" data-i18n="auth.btn_enlist">Enlist</span>
+                <span class="auth__submit-text" data-i18n="auth.btn_enlist"
+                  >Enlist</span
+                >
                 <svg
                   class="auth__submit-arrow"
                   width="16"
