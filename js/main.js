@@ -11,6 +11,7 @@ import { Loader } from "./animations/loader.js";
 import { Hero } from "./animations/hero.js";
 import { Cursor } from "./core/cursor.js";
 import { NavMenu } from "./core/nav.js";
+import { ThemeToggle } from "./core/theme.js";
 
 GsapSetup.init();
 
@@ -21,6 +22,8 @@ hero.prep();
 new Cursor().init();
 
 new NavMenu().init();
+
+new ThemeToggle().init();
 
 new I18n().init();
 

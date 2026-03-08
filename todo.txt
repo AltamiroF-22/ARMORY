@@ -4,4 +4,4 @@
 
 [x] curso customizado de mira com invert de color 
 
-[] tema light e dark -> dark default
+[x] tema light e dark -> dark default. faça uma transição com GSAP

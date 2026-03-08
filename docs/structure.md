@@ -58,6 +58,7 @@ All JS modules are written as **ES6 classes** following OOP principles:
 | `core/i18n.js`         | `I18n`        | `init()`                 |
 | `core/cursor.js`       | `Cursor`      | `init()`, `destroy()`    |
 | `core/nav.js`          | `NavMenu`     | `init()`                 |
+| `core/theme.js`        | `ThemeToggle` | `init()`                 |
 | `animations/loader.js` | `Loader`      | `init(onComplete)`       |
 | `animations/hero.js`   | `Hero`        | `prep()`, `init()`       |
 

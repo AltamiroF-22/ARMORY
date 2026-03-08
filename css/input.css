@@ -66,6 +66,38 @@
     @apply block max-w-full;
   }
 
+  /* ── Theme switching via data-theme on <html> ──────────────── */
+  /* Dark is the default; values in @theme already represent dark mode. */
+  /* Light theme overrides the same vars so every Tailwind utility      */
+  /* (bg-black, text-white, border-border …) automatically adapts.      */
+  [data-theme="light"] {
+    --color-black:   #f5f0e8;
+    --color-dark:    #ede8de;
+    --color-mid:     #e0dbd0;
+    --color-surface: #d5d0c5;
+    --color-white:   #0d0b08;
+    --color-border:  rgba(0, 0, 0, 0.09);
+  }
+
+  /* Hero, loader, and mobile nav overlay stay dark in both themes      */
+  /* so text remains readable and the brand atmosphere is preserved.    */
+  [data-theme="light"] #hero,
+  [data-theme="light"] #loader,
+  [data-theme="light"] #nav-overlay {
+    --color-black:  #080808;
+    --color-dark:   #111111;
+    --color-mid:    #1c1c1c;
+    --color-white:  #f0ede8;
+    --color-border: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Keep nav mix-blend-mode: difference working correctly: the nav text  */
+  /* must stay as cream/white so inversion reads properly on both         */
+  /* dark and light backgrounds.                                          */
+  [data-theme="light"] .nav {
+    --color-white: #f0ede8;
+  }
+
   /* Fluid type scale as CSS custom props (used by GSAP modules) */
   :root {
     /* HD (1920px) → QHD (2560px) → 4K (3840px) */
@@ -209,7 +241,7 @@
   .lang-panel {
     position: fixed;
     width: 164px;
-    background: #0e0e0e;
+    background: var(--color-dark);
     border: 1px solid rgba(200, 169, 110, 0.18);
     padding: 6px 0;
     opacity: 0;
@@ -237,7 +269,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(240, 237, 232, 0.45);
+    color: color-mix(in srgb, var(--color-white) 45%, transparent);
     background: none;
     border: none;
     cursor: pointer;
@@ -259,7 +291,7 @@
     position: fixed;
     inset: 0;
     z-index: 99;
-    background: #080808;
+    background: var(--color-black);
     display: flex;
     flex-direction: column;
     padding: clamp(4.5rem, 10vh, 6rem) clamp(1.5rem, 6vw, 3rem)
@@ -294,13 +326,14 @@
     align-items: baseline;
     gap: 1rem;
     padding: clamp(0.5rem, 1.5vh, 0.9rem) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid var(--color-border);
     text-decoration: none;
   }
 
   .nav-overlay__list li:last-child .nav-overlay__link {
     border-bottom: none;
   }
+
 
   .nav-overlay__num {
     font-family: var(--font-body);
@@ -321,7 +354,7 @@
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 7vw, 5rem);
     letter-spacing: -0.01em;
-    color: #f0ede8;
+    color: var(--color-white);
     transition:
       color 0.2s ease,
       letter-spacing 0.3s var(--ease-out-expo);
@@ -338,7 +371,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: clamp(1rem, 3vh, 1.75rem);
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid var(--color-border);
     /* opacity/y set by GSAP */
   }
 
@@ -366,7 +399,7 @@
     font-size: 0.6rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(240, 237, 232, 0.2);
+    color: color-mix(in srgb, var(--color-white) 20%, transparent);
   }
 
   /* Hamburger */
@@ -416,6 +449,52 @@
       display: none !important;
     }
   }
+
+  /* ── Theme overlay (GSAP wipe transition) ──────────────── */
+
+  #theme-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000; /* above everything, including cursor */
+    pointer-events: none;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  /* ── Theme toggle button ─────────────────────────────────── */
+
+  #theme-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  #theme-btn:hover {
+    opacity: 1;
+  }
+
+  /* Bolder stroke to match nav text weight */
+  #theme-btn svg {
+    stroke-width: 2.5px;
+  }
+
+  /* Sun icon — visible in dark mode (click to go light) */
+  #theme-btn .theme-btn__icon--sun  { display: block; }
+  #theme-btn .theme-btn__icon--moon { display: none;  }
+
+  /* Moon icon — visible in light mode (click to go dark) */
+  [data-theme="light"] #theme-btn .theme-btn__icon--sun  { display: none;  }
+  [data-theme="light"] #theme-btn .theme-btn__icon--moon { display: block; }
 
   /* ── Custom cursor: tactical targeting brackets ────────── */
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,6 +17,15 @@
 
     <!-- CSS: Tailwind output (tokens + utilities + components) -->
     <link rel="stylesheet" href="css/output.css" />
+
+    <!-- Restore theme before first paint to prevent flash of wrong theme -->
+    <script>
+      (function () {
+        var t = localStorage.getItem("armory-theme");
+        document.documentElement.dataset.theme =
+          t === "light" ? "light" : "dark";
+      })();
+    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -79,6 +88,28 @@
         </ul>
         <div class="nav-overlay__bottom">
           <a href="#" data-i18n="nav.login" class="nav-overlay__cta">Login</a>
+          <!-- Theme toggle (mobile) -->
+          <button
+            id="theme-btn-mobile"
+            aria-label="Toggle theme"
+            onclick="document.getElementById('theme-btn').click()"
+            class="flex items-center gap-1.5 text-[0.6rem] tracking-[0.15em] uppercase text-white/40 hover:text-white/80 transition-colors duration-200 bg-none border-none cursor-pointer font-body"
+          >
+            <i
+              data-lucide="sun"
+              class="theme-btn__icon theme-btn__icon--sun"
+              width="14"
+              height="14"
+              aria-hidden="true"
+            ></i>
+            <i
+              data-lucide="moon"
+              class="theme-btn__icon theme-btn__icon--moon"
+              width="14"
+              height="14"
+              aria-hidden="true"
+            ></i>
+          </button>
           <p class="nav-overlay__tag">ARMORY &copy; 2026</p>
         </div>
       </div>
@@ -174,6 +205,29 @@
               >
                 Login
               </a>
+
+              <!-- Theme toggle -->
+              <button
+                id="theme-btn"
+                aria-label="Switch to light mode"
+                class="text-white/60 hover:text-white transition-colors duration-300"
+              >
+                <i
+                  data-lucide="sun"
+                  class="theme-btn__icon theme-btn__icon--sun"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                ></i>
+
+                <i
+                  data-lucide="moon"
+                  class="theme-btn__icon theme-btn__icon--moon"
+                  width="16"
+                  height="16"
+                  aria-hidden="true"
+                ></i>
+              </button>
 
               <!-- Language switcher -->
               <div id="lang-switcher" class="relative">
@@ -394,7 +448,7 @@
 
         <!-- PLACEHOLDER SECTIONS -->
         <section
-          class="w-full h-screen flex items-center justify-center border-t border-white/[.08] bg-[#0a0a0a]"
+          class="w-full h-screen flex items-center justify-center border-t border-border bg-black"
         >
           <h2
             data-i18n="sections.arsenal"
@@ -405,7 +459,7 @@
         </section>
 
         <section
-          class="w-full h-screen flex items-center justify-center border-t border-white/[.08] bg-[#111]"
+          class="w-full h-screen flex items-center justify-center border-t border-border bg-dark"
         >
           <h2
             data-i18n="sections.ammo"
@@ -419,6 +473,13 @@
     </div>
     <!-- /smooth-wrapper -->
 
+    <!-- Lucide icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <script>
+      lucide.createIcons();
+    </script>
+
     <!-- Lenis smooth scroll -->
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
@@ -429,5 +490,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
 
     <script src="js/main.js" type="module"></script>
+
+    <!-- Theme transition overlay: GSAP wipes this across the viewport -->
+    <div id="theme-overlay" aria-hidden="true"></div>
   </body>
 </html>
