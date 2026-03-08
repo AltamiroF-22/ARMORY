@@ -20,4 +20,18 @@ export const pt = {
     arsenal: "Arsenal",
     ammo: "Munições",
   },
+  arsenal: {
+    eyebrow: "Coleção em Destaque",
+    line1: "ELITE",
+    line2: "ARSENAL",
+    sub: "Equipamentos táticos selecionados a dedo, projetados para o campo e além.",
+    cta: "Ver Tudo",
+  },
+  ammo: {
+    eyebrow: "Munições Táticas",
+    line1: "PODER",
+    line2: "DE FOGO",
+    sub: "Munições de alto desempenho para cada cenário de combate — do corpo a corpo ao longo alcance.",
+    cta: "Ver Tudo",
+  },
 };

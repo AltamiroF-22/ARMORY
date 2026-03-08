@@ -60,8 +60,7 @@ All JS modules are written as **ES6 classes** following OOP principles:
 | `core/nav.js`          | `NavMenu`     | `init()`                 |
 | `core/theme.js`        | `ThemeToggle` | `init()`                 |
 | `animations/loader.js` | `Loader`      | `init(onComplete)`       |
-| `animations/hero.js`   | `Hero`        | `prep()`, `init()`       |
-
+| `animations/hero.js`   | `Hero`        | `prep()`, `init()`       || `animations/arsenal.js`| `Arsenal`       | `prep()`, `init()`       |
 ## Key principles
 
 - **No build pipeline beyond Tailwind.** JS is native ESM loaded directly by the browser — no bundler (Vite, Webpack, etc.).

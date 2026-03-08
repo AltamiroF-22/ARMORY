@@ -82,6 +82,7 @@ export class I18n {
         const lang = item.dataset.lang;
         localStorage.setItem(I18n.#STORAGE_KEY, lang);
         this.#applyLocale(lang);
+        document.dispatchEvent(new CustomEvent("locale-change", { detail: { lang } }));
         this.#panel.classList.remove("is-open");
         this.#btn?.setAttribute("aria-expanded", "false");
       });

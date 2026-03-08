@@ -20,4 +20,18 @@ export const de = {
     arsenal: "Arsenal",
     ammo: "Munition",
   },
+  arsenal: {
+    eyebrow: "Ausgewählte Kollektion",
+    line1: "ELITE",
+    line2: "ARSENAL",
+    sub: "Handverlesene Taktikausrüstung, entwickelt für den Einsatz und darüber hinaus.",
+    cta: "Alle ansehen",
+  },
+  ammo: {
+    eyebrow: "Taktische Munition",
+    line1: "TÖDLICHE",
+    line2: "MUNITION",
+    sub: "Hochleistungsmunition für jeden Kampfeinsatz — von der Nahkampfzone bis zur Extremdistanz.",
+    cta: "Alle ansehen",
+  },
 };

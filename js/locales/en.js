@@ -20,4 +20,18 @@ export const en = {
     arsenal: "Arsenal",
     ammo: "Ammo",
   },
+  arsenal: {
+    eyebrow: "Featured Collection",
+    line1: "ELITE",
+    line2: "ARSENAL",
+    sub: "Hand-selected tactical equipment engineered for the field and beyond.",
+    cta: "View All",
+  },
+  ammo: {
+    eyebrow: "Tactical Ammunition",
+    line1: "LETHAL",
+    line2: "ROUNDS",
+    sub: "Precision-engineered rounds for every engagement scenario — from close quarters to extreme distance.",
+    cta: "View All",
+  },
 };

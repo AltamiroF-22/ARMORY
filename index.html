@@ -446,28 +446,136 @@
           </div>
         </section>
 
-        <!-- PLACEHOLDER SECTIONS -->
+        <!-- ─────────────────────────────────────────────
+             ARSENAL
+        ───────────────────────────────────────────── -->
         <section
-          class="w-full h-screen flex items-center justify-center border-t border-border bg-black"
+          id="arsenal"
+          class="relative py-[clamp(6rem,12vw,10rem)] bg-black border-t border-border"
         >
-          <h2
-            data-i18n="sections.arsenal"
-            class="font-display text-[clamp(3rem,8vw,8rem)] tracking-[0.05em] text-white/[.08] uppercase"
-          >
-            Arsenal
-          </h2>
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8">
+            <!-- Header -->
+            <div class="arsenal__header">
+              <div>
+                <div id="arsenal-eyebrow" class="flex items-center gap-4 mb-6">
+                  <span class="block w-10 h-px bg-gold shrink-0"></span>
+                  <span
+                    data-i18n="arsenal.eyebrow"
+                    class="text-[0.7rem] tracking-[0.3em] uppercase text-gold"
+                    >Featured Collection</span
+                  >
+                </div>
+                <h2
+                  id="arsenal-title"
+                  class="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.02em] text-white"
+                >
+                  <span class="block overflow-hidden leading-[0.9]">
+                    <span class="arsenal__title-line" data-i18n="arsenal.line1"
+                      >ELITE</span
+                    >
+                  </span>
+                  <span class="block overflow-hidden leading-[0.9]">
+                    <span class="arsenal__title-line" data-i18n="arsenal.line2"
+                      >ARSENAL</span
+                    >
+                  </span>
+                </h2>
+              </div>
+              <div class="arsenal__header-right">
+                <p
+                  id="arsenal-sub"
+                  data-i18n="arsenal.sub"
+                  class="text-[var(--fs-body)] text-white/50 max-w-[360px] leading-relaxed"
+                >
+                  Hand-selected tactical equipment engineered for the field and
+                  beyond.
+                </p>
+                <a
+                  href="#"
+                  id="arsenal-viewall"
+                  class="inline-flex items-center gap-2 text-[0.7rem] tracking-[0.2em] uppercase text-gold border-b border-gold/30 pb-0.5 hover:border-gold transition-colors duration-300"
+                >
+                  <span data-i18n="arsenal.cta">View All</span>
+                  <i
+                    data-lucide="arrow-right"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Product grid — rendered by Arsenal.#render() via js/data/products.js -->
+            <div class="arsenal__grid" id="arsenal-grid"></div>
+            <!-- /arsenal__grid -->
+          </div>
         </section>
 
+        <!-- ── Ammo ──────────────────────────────────────────────── -->
         <section
-          class="w-full h-screen flex items-center justify-center border-t border-border bg-dark"
+          id="ammo"
+          class="relative py-[clamp(6rem,12vw,10rem)] bg-black border-t border-border"
         >
-          <h2
-            data-i18n="sections.ammo"
-            class="font-display text-[clamp(3rem,8vw,8rem)] tracking-[0.05em] text-white/[.08] uppercase"
-          >
-            Ammo
-          </h2>
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8">
+            <!-- Header -->
+            <div class="ammo__header">
+              <div>
+                <div id="ammo-eyebrow" class="flex items-center gap-4 mb-6">
+                  <span class="block w-10 h-px bg-gold shrink-0"></span>
+                  <span
+                    data-i18n="ammo.eyebrow"
+                    class="text-[0.7rem] tracking-[0.3em] uppercase text-gold"
+                    >Tactical Ammunition</span
+                  >
+                </div>
+                <h2
+                  id="ammo-title"
+                  class="font-display text-[clamp(3rem,7vw,6.5rem)] leading-[0.9] tracking-[-0.02em] text-white"
+                >
+                  <span class="block overflow-hidden leading-[0.9]">
+                    <span class="ammo__title-line" data-i18n="ammo.line1"
+                      >LETHAL</span
+                    >
+                  </span>
+                  <span class="block overflow-hidden leading-[0.9]">
+                    <span class="ammo__title-line" data-i18n="ammo.line2"
+                      >ROUNDS</span
+                    >
+                  </span>
+                </h2>
+              </div>
+
+              <div class="ammo__header-right">
+                <p
+                  id="ammo-sub"
+                  data-i18n="ammo.sub"
+                  class="text-[var(--fs-body)] text-white/50 max-w-[360px] leading-relaxed"
+                >
+                  Precision-engineered rounds for every engagement scenario.
+                </p>
+                <a
+                  href="#"
+                  id="ammo-viewall"
+                  class="inline-flex items-center gap-2 text-[0.7rem] tracking-[0.2em] uppercase text-gold border-b border-gold/30 pb-0.5 hover:border-gold transition-colors duration-300"
+                >
+                  <span data-i18n="ammo.cta">View All</span>
+                  <i
+                    data-lucide="arrow-right"
+                    width="12"
+                    height="12"
+                    aria-hidden="true"
+                  ></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Round grid — rendered by Ammo.#render() via js/data/ammo.js -->
+            <div class="ammo__grid" id="ammo-grid"></div>
+            <!-- /ammo__grid -->
+          </div>
         </section>
+        <!-- /ammo -->
       </div>
       <!-- /smooth-content -->
     </div>

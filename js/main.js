@@ -9,6 +9,8 @@ import { LenisScroll } from "./core/lenis.js";
 import { I18n } from "./core/i18n.js";
 import { Loader } from "./animations/loader.js";
 import { Hero } from "./animations/hero.js";
+import { Arsenal } from "./animations/arsenal.js";
+import { Ammo } from "./animations/ammo.js";
 import { Cursor } from "./core/cursor.js";
 import { NavMenu } from "./core/nav.js";
 import { ThemeToggle } from "./core/theme.js";
@@ -17,7 +19,15 @@ GsapSetup.init();
 
 const hero = new Hero();
 
+const arsenal = new Arsenal();
+
+const ammo = new Ammo();
+
 hero.prep();
+
+arsenal.prep();
+
+ammo.prep();
 
 new Cursor().init();
 
@@ -31,4 +41,8 @@ new LenisScroll().init();
 
 new Loader().init(() => {
   hero.init();
+
+  arsenal.init();
+
+  ammo.init();
 });

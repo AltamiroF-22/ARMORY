@@ -71,12 +71,12 @@
   /* Light theme overrides the same vars so every Tailwind utility      */
   /* (bg-black, text-white, border-border …) automatically adapts.      */
   [data-theme="light"] {
-    --color-black:   #f5f0e8;
-    --color-dark:    #ede8de;
-    --color-mid:     #e0dbd0;
+    --color-black: #f5f0e8;
+    --color-dark: #ede8de;
+    --color-mid: #e0dbd0;
     --color-surface: #d5d0c5;
-    --color-white:   #0d0b08;
-    --color-border:  rgba(0, 0, 0, 0.09);
+    --color-white: #0d0b08;
+    --color-border: rgba(0, 0, 0, 0.09);
   }
 
   /* Hero, loader, and mobile nav overlay stay dark in both themes      */
@@ -84,10 +84,10 @@
   [data-theme="light"] #hero,
   [data-theme="light"] #loader,
   [data-theme="light"] #nav-overlay {
-    --color-black:  #080808;
-    --color-dark:   #111111;
-    --color-mid:    #1c1c1c;
-    --color-white:  #f0ede8;
+    --color-black: #080808;
+    --color-dark: #111111;
+    --color-mid: #1c1c1c;
+    --color-white: #f0ede8;
     --color-border: rgba(255, 255, 255, 0.08);
   }
 
@@ -334,7 +334,6 @@
     border-bottom: none;
   }
 
-
   .nav-overlay__num {
     font-family: var(--font-body);
     font-size: 0.6rem;
@@ -450,6 +449,366 @@
     }
   }
 
+  /* ── Arsenal ─────────────────────────────────────────────── */
+
+  .arsenal__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    flex-wrap: wrap;
+  }
+
+  .arsenal__header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.3rem; /* align baseline with title */
+  }
+
+  .arsenal__title-line {
+    @apply block;
+    will-change: transform;
+  }
+
+  .arsenal__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  @media (max-width: 1023px) {
+    .arsenal__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .arsenal__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+  }
+
+  .arsenal-card {
+    position: relative;
+    background: var(--color-mid);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.4s var(--ease-out-expo);
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  .arsenal-card:hover {
+    border-color: rgba(200, 169, 110, 0.4);
+  }
+
+  .arsenal-card__img-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .arsenal-card__img {
+    position: absolute;
+    inset: -6%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(55%) contrast(1.05);
+    transition:
+      transform 0.7s var(--ease-out-expo),
+      filter 0.5s ease;
+    will-change: transform;
+  }
+
+  .arsenal-card:hover .arsenal-card__img {
+    transform: scale(1.07);
+    filter: grayscale(25%) contrast(1.1);
+  }
+
+  /* Bottom-to-transparent gradient uses theme var so it works in light mode too */
+  .arsenal-card__img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-mid) 0%, transparent 55%);
+    z-index: 1;
+  }
+
+  .arsenal-card__badge {
+    position: absolute;
+    top: clamp(0.65rem, 1.2vw, 0.9rem);
+    left: clamp(0.65rem, 1.2vw, 0.9rem);
+    font-family: var(--font-body);
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
+    color: rgba(200, 169, 110, 0.55);
+    z-index: 2;
+  }
+
+  .arsenal-card__body {
+    padding: clamp(0.9rem, 1.4vw, 1.2rem);
+  }
+
+  .arsenal-card__cat {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold-dim);
+    margin-bottom: 0.35rem;
+  }
+
+  .arsenal-card__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.6vw, 1.5rem);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--color-white);
+    margin-bottom: clamp(0.7rem, 1vw, 1rem);
+  }
+
+  .arsenal-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-border);
+    padding-top: 0.7rem;
+  }
+
+  .arsenal-card__price {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+  }
+
+  .arsenal-card__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--color-border);
+    color: var(--color-white);
+    flex-shrink: 0;
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .arsenal-card__link:hover {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: #080808;
+  }
+
+  /* ── Ammo ──────────────────────────────────────────────── */
+
+  .ammo__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: clamp(2rem, 5vw, 4rem);
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+    flex-wrap: wrap;
+  }
+
+  .ammo__header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 0.3rem;
+  }
+
+  .ammo__title-line {
+    @apply block;
+    will-change: transform;
+  }
+
+  .ammo__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  }
+
+  @media (max-width: 1023px) {
+    .ammo__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .ammo__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+  }
+
+  .ammo-card {
+    position: relative;
+    background: var(--color-mid);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.4s var(--ease-out-expo);
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  .ammo-card:hover {
+    border-color: rgba(200, 169, 110, 0.4);
+  }
+
+  .ammo-card__img-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+  }
+
+  .ammo-card__img {
+    position: absolute;
+    inset: -6%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(55%) contrast(1.05);
+    transition:
+      transform 0.7s var(--ease-out-expo),
+      filter 0.5s ease;
+    will-change: transform;
+  }
+
+  .ammo-card:hover .ammo-card__img {
+    transform: scale(1.07);
+    filter: grayscale(25%) contrast(1.1);
+  }
+
+  .ammo-card__img-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-mid) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  /* Caliber badge — top-right pill with glass blur */
+  .ammo-card__cal {
+    position: absolute;
+    top: clamp(0.65rem, 1.2vw, 0.9rem);
+    right: clamp(0.65rem, 1.2vw, 0.9rem);
+    font-family: var(--font-body);
+    font-size: 0.48rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(200, 169, 110, 0.85);
+    z-index: 2;
+    background: rgba(8, 8, 8, 0.65);
+    padding: 4px 8px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(200, 169, 110, 0.2);
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .ammo-card__body {
+    padding: clamp(0.9rem, 1.4vw, 1.2rem);
+  }
+
+  .ammo-card__type {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-gold-dim);
+    margin-bottom: 0.35rem;
+  }
+
+  .ammo-card__name {
+    font-family: var(--font-display);
+    font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--color-white);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Two-column spec grid (GRAIN / VELOCITY) */
+  .ammo-card__specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ammo-card__spec {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .ammo-card__spec-label {
+    font-family: var(--font-body);
+    font-size: 0.44rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold-dim);
+  }
+
+  .ammo-card__spec-val {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: var(--color-white);
+  }
+
+  .ammo-card__spec-unit {
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    color: var(--color-gold-dim);
+    margin-left: 1px;
+  }
+
+  .ammo-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ammo-card__price {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--color-gold);
+  }
+
+  .ammo-card__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid var(--color-border);
+    color: var(--color-white);
+    flex-shrink: 0;
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .ammo-card__link:hover {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: #080808;
+  }
+
   /* ── Theme overlay (GSAP wipe transition) ──────────────── */
 
   #theme-overlay {
@@ -489,12 +848,20 @@
   }
 
   /* Sun icon — visible in dark mode (click to go light) */
-  #theme-btn .theme-btn__icon--sun  { display: block; }
-  #theme-btn .theme-btn__icon--moon { display: none;  }
+  #theme-btn .theme-btn__icon--sun {
+    display: block;
+  }
+  #theme-btn .theme-btn__icon--moon {
+    display: none;
+  }
 
   /* Moon icon — visible in light mode (click to go dark) */
-  [data-theme="light"] #theme-btn .theme-btn__icon--sun  { display: none;  }
-  [data-theme="light"] #theme-btn .theme-btn__icon--moon { display: block; }
+  [data-theme="light"] #theme-btn .theme-btn__icon--sun {
+    display: none;
+  }
+  [data-theme="light"] #theme-btn .theme-btn__icon--moon {
+    display: block;
+  }
 
   /* ── Custom cursor: tactical targeting brackets ────────── */
 
