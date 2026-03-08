@@ -87,7 +87,7 @@
           </li>
         </ul>
         <div class="nav-overlay__bottom">
-          <a href="#" data-i18n="nav.login" class="nav-overlay__cta">Login</a>
+          <a href="#" data-i18n="nav.login" data-auth-open="login" class="nav-overlay__cta">Login</a>
           <!-- Theme toggle (mobile) -->
           <button
             id="theme-btn-mobile"
@@ -201,6 +201,7 @@
               <a
                 href="#"
                 data-i18n="nav.login"
+                data-auth-open="login"
                 class="text-[0.7rem] tracking-[0.2em] uppercase text-gold border border-gold px-5 py-2 hover:bg-gold hover:text-black transition-colors duration-300"
               >
                 Login
@@ -580,6 +581,307 @@
       <!-- /smooth-content -->
     </div>
     <!-- /smooth-wrapper -->
+
+    <!-- ─────────────────────────────  AUTH OVERLAY  ───────────────────────────── -->
+    <div id="auth-overlay" aria-hidden="true">
+      <div class="auth__backdrop"></div>
+
+      <button id="auth-close" class="auth__close" aria-label="Close">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          fill="none"
+          aria-hidden="true"
+        >
+          <line
+            x1="1"
+            y1="1"
+            x2="17"
+            y2="17"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <line
+            x1="17"
+            y1="1"
+            x2="1"
+            y2="17"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+
+      <div class="auth__grid">
+        <!-- ── Left: visual panel ──────────────────────── -->
+        <div class="auth__visual">
+          <div class="auth__visual-ruled" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+
+          <div class="auth__visual-top">
+            <span class="auth__visual-brand">ARMORY</span>
+            <span class="auth__visual-year">© 2026</span>
+          </div>
+
+          <div class="auth__visual-center">
+            <span class="auth__visual-count" id="auth-member-count">247</span>
+            <p class="auth__visual-count-label">Operators<br />Enlisted</p>
+          </div>
+
+          <p class="auth__visual-tagline">
+            Precision.<br />Power.<br />Purpose.
+          </p>
+
+          <div class="auth__visual-crosshair" aria-hidden="true">
+            <svg
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                stroke="#c8a96e"
+                stroke-width="0.5"
+                stroke-dasharray="3 6"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="25"
+                stroke="#c8a96e"
+                stroke-width="0.8"
+              />
+              <line
+                x1="50"
+                y1="5"
+                x2="50"
+                y2="25"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="50"
+                y1="75"
+                x2="50"
+                y2="95"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="5"
+                y1="50"
+                x2="25"
+                y2="50"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <line
+                x1="75"
+                y1="50"
+                x2="95"
+                y2="50"
+                stroke="#c8a96e"
+                stroke-width="1"
+              />
+              <circle cx="50" cy="50" r="2" fill="#c8a96e" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- ── Right: form panel ───────────────────────── -->
+        <div class="auth__panel">
+          <!-- LOGIN -->
+          <div class="auth__form" id="auth-form-login">
+            <header class="auth__form-head">
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_login">01 / ACCESS</span>
+              <h2 class="auth__title">
+                <span class="auth__title-line" data-i18n="auth.title_login_1">Welcome</span>
+                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_login_2"
+                  >Back.</span
+                >
+              </h2>
+            </header>
+
+            <form id="form-login" novalidate>
+              <div class="auth__field">
+                <input
+                  type="email"
+                  id="l-email"
+                  class="auth__input"
+                  placeholder=" "
+                  autocomplete="email"
+                  required
+                />
+                <label for="l-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input
+                  type="password"
+                  id="l-pass"
+                  class="auth__input"
+                  placeholder=" "
+                  autocomplete="current-password"
+                  required
+                />
+                <label for="l-pass" class="auth__label" data-i18n="auth.label_password">Password</label>
+                <span class="auth__underline"></span>
+              </div>
+              <p
+                class="auth__error"
+                id="login-error"
+                role="alert"
+                aria-live="polite"
+              ></p>
+              <button type="submit" class="auth__submit">
+                <span class="auth__submit-text" data-i18n="auth.btn_enter">Enter</span>
+                <svg
+                  class="auth__submit-arrow"
+                  width="16"
+                  height="10"
+                  viewBox="0 0 16 10"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="0"
+                    y1="5"
+                    x2="13"
+                    y2="5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                  <polyline
+                    points="9,1 13,5 9,9"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    fill="none"
+                  />
+                </svg>
+              </button>
+            </form>
+
+            <p class="auth__switch">
+              <span data-i18n="auth.no_account">No account?</span>
+              <button
+                type="button"
+                class="auth__switch-btn"
+                data-auth-to="register"
+                data-i18n="auth.create_one"
+              >
+                Create one →
+              </button>
+            </p>
+          </div>
+
+          <!-- REGISTER -->
+          <div class="auth__form" id="auth-form-register">
+            <header class="auth__form-head">
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_register">02 / ENLIST</span>
+              <h2 class="auth__title">
+                <span class="auth__title-line" data-i18n="auth.title_reg_1">New</span>
+                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_reg_2"
+                  >Operator.</span
+                >
+              </h2>
+            </header>
+
+            <form id="form-register" novalidate>
+              <div class="auth__field">
+                <input
+                  type="text"
+                  id="r-name"
+                  class="auth__input"
+                  placeholder=" "
+                  autocomplete="name"
+                  required
+                />
+                <label for="r-name" class="auth__label" data-i18n="auth.label_name">Full name</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input
+                  type="email"
+                  id="r-email"
+                  class="auth__input"
+                  placeholder=" "
+                  autocomplete="email"
+                  required
+                />
+                <label for="r-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input
+                  type="password"
+                  id="r-pass"
+                  class="auth__input"
+                  placeholder=" "
+                  autocomplete="new-password"
+                  required
+                  minlength="6"
+                />
+                <label for="r-pass" class="auth__label" data-i18n="auth.label_pass_hint"
+                  >Password — min 6 chars</label
+                >
+                <span class="auth__underline"></span>
+              </div>
+              <p
+                class="auth__error"
+                id="register-error"
+                role="alert"
+                aria-live="polite"
+              ></p>
+              <button type="submit" class="auth__submit">
+                <span class="auth__submit-text" data-i18n="auth.btn_enlist">Enlist</span>
+                <svg
+                  class="auth__submit-arrow"
+                  width="16"
+                  height="10"
+                  viewBox="0 0 16 10"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="0"
+                    y1="5"
+                    x2="13"
+                    y2="5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                  <polyline
+                    points="9,1 13,5 9,9"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    fill="none"
+                  />
+                </svg>
+              </button>
+            </form>
+
+            <p class="auth__switch">
+              <span data-i18n="auth.enlisted">Already enlisted?</span>
+              <button
+                type="button"
+                class="auth__switch-btn"
+                data-auth-to="login"
+                data-i18n="auth.sign_in"
+              >
+                Sign in →
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /auth-overlay -->
 
     <!-- Lucide icons -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>

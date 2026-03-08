@@ -14,6 +14,7 @@ import { Ammo } from "./animations/ammo.js";
 import { Cursor } from "./core/cursor.js";
 import { NavMenu } from "./core/nav.js";
 import { ThemeToggle } from "./core/theme.js";
+import { AuthOverlay } from "./core/auth.js";
 
 GsapSetup.init();
 
@@ -34,6 +35,8 @@ new Cursor().init();
 new NavMenu().init();
 
 new ThemeToggle().init();
+
+new AuthOverlay().init();
 
 new I18n().init();
 
