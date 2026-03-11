@@ -11,6 +11,8 @@ import { Loader } from "./animations/loader.js";
 import { Hero } from "./animations/hero.js";
 import { Arsenal } from "./animations/arsenal.js";
 import { Ammo } from "./animations/ammo.js";
+import { Contact } from "./animations/contact.js";
+import { Footer } from "./animations/footer.js";
 import { Cursor } from "./core/cursor.js";
 import { NavMenu } from "./core/nav.js";
 import { ThemeToggle } from "./core/theme.js";
@@ -23,12 +25,18 @@ const hero = new Hero();
 const arsenal = new Arsenal();
 
 const ammo = new Ammo();
+const contact = new Contact();
+const footer = new Footer();
 
 hero.prep();
 
 arsenal.prep();
 
 ammo.prep();
+
+contact.prep();
+
+footer.prep();
 
 new Cursor().init();
 
@@ -48,4 +56,8 @@ new Loader().init(() => {
   arsenal.init();
 
   ammo.init();
+
+  contact.init();
+
+  footer.init();
 });

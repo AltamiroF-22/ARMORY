@@ -649,6 +649,410 @@
           </div>
         </section>
         <!-- /ammo -->
+
+        <!-- ─────────────────────────────────────────────
+             CONTACT
+        ───────────────────────────────────────────── -->
+        <section
+          id="contact"
+          class="relative py-[clamp(6rem,12vw,10rem)] bg-black border-t border-border overflow-hidden"
+        >
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8">
+            <!-- Eyebrow -->
+            <div
+              id="contact-eyebrow"
+              class="flex items-center gap-4 mb-[clamp(3.5rem,7vw,6rem)] opacity-0"
+            >
+              <span class="block w-10 h-px bg-gold shrink-0"></span>
+              <span
+                data-i18n="contact.eyebrow"
+                class="text-[0.7rem] tracking-[0.3em] uppercase text-gold"
+              >
+                04 / Contact
+              </span>
+            </div>
+
+            <!-- Two-column layout -->
+            <div class="contact__grid">
+              <!-- Left: title + info -->
+              <div class="contact__left">
+                <h2
+                  id="contact-title"
+                  class="font-display text-[clamp(3rem,7vw,7rem)] leading-[0.88] tracking-[-0.02em] text-white mb-8"
+                >
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="contact__title-line" data-i18n="contact.line1"
+                      >GET IN</span
+                    >
+                  </span>
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="contact__title-line" data-i18n="contact.line2"
+                      >TOUCH.</span
+                    >
+                  </span>
+                </h2>
+
+                <p
+                  id="contact-sub"
+                  data-i18n="contact.sub"
+                  class="text-[var(--fs-body)] text-white/50 max-w-[380px] leading-relaxed mb-12 opacity-0"
+                >
+                  Reach our operations team. Mission inquiries, wholesale
+                  orders, and direct support.
+                </p>
+
+                <!-- Info list -->
+                <ul class="contact__info-list">
+                  <li class="contact__info-item">
+                    <span
+                      class="contact__info-label"
+                      data-i18n="contact.info_email_label"
+                      >Direct Line</span
+                    >
+                    <a
+                      href="mailto:operations@armory.store"
+                      class="contact__info-value"
+                      >operations@armory.store</a
+                    >
+                  </li>
+                  <li class="contact__info-item">
+                    <span
+                      class="contact__info-label"
+                      data-i18n="contact.info_phone_label"
+                      >Field Phone</span
+                    >
+                    <a href="tel:+18002766769" class="contact__info-value"
+                      >+1 (800) ARM-ORY</a
+                    >
+                  </li>
+                  <li class="contact__info-item">
+                    <span
+                      class="contact__info-label"
+                      data-i18n="contact.info_addr_label"
+                      >Command Post</span
+                    >
+                    <span class="contact__info-value">New York, NY 10001</span>
+                  </li>
+                  <li class="contact__info-item">
+                    <span
+                      class="contact__info-label"
+                      data-i18n="contact.info_hours_label"
+                      >Open Hours</span
+                    >
+                    <span class="contact__info-value"
+                      >Mon–Sat &nbsp;09:00–18:00</span
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Right: form -->
+              <div id="contact-form-wrap" class="contact__right">
+                <form id="form-contact" class="contact__form" novalidate>
+                  <div class="auth__field">
+                    <input
+                      type="text"
+                      id="c-name"
+                      class="auth__input"
+                      placeholder=" "
+                      autocomplete="name"
+                      required
+                    />
+                    <label
+                      for="c-name"
+                      class="auth__label"
+                      data-i18n="contact.label_name"
+                      >Full name</label
+                    >
+                    <span class="auth__underline"></span>
+                  </div>
+                  <div class="auth__field">
+                    <input
+                      type="email"
+                      id="c-email"
+                      class="auth__input"
+                      placeholder=" "
+                      autocomplete="email"
+                      required
+                    />
+                    <label
+                      for="c-email"
+                      class="auth__label"
+                      data-i18n="contact.label_email"
+                      >Email address</label
+                    >
+                    <span class="auth__underline"></span>
+                  </div>
+                  <div class="auth__field">
+                    <input
+                      type="text"
+                      id="c-subject"
+                      class="auth__input"
+                      placeholder=" "
+                      required
+                    />
+                    <label
+                      for="c-subject"
+                      class="auth__label"
+                      data-i18n="contact.label_subject"
+                      >Subject</label
+                    >
+                    <span class="auth__underline"></span>
+                  </div>
+                  <div class="auth__field contact__textarea-field">
+                    <textarea
+                      id="c-message"
+                      class="auth__input contact__textarea"
+                      placeholder=" "
+                      required
+                    ></textarea>
+                    <label
+                      for="c-message"
+                      class="auth__label"
+                      data-i18n="contact.label_message"
+                      >Message</label
+                    >
+                    <span class="auth__underline"></span>
+                  </div>
+                  <button type="submit" class="auth__submit contact__submit">
+                    <span class="auth__submit-text" data-i18n="contact.btn_send"
+                      >Send message</span
+                    >
+                    <svg
+                      class="auth__submit-arrow"
+                      width="16"
+                      height="10"
+                      viewBox="0 0 16 10"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <line
+                        x1="0"
+                        y1="5"
+                        x2="13"
+                        y2="5"
+                        stroke="currentColor"
+                        stroke-width="1.2"
+                      />
+                      <polyline
+                        points="9,1 13,5 9,9"
+                        stroke="currentColor"
+                        stroke-width="1.2"
+                        fill="none"
+                      />
+                    </svg>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             FOOTER
+        ───────────────────────────────────────────── -->
+        <footer
+          id="footer"
+          class="bg-dark border-t border-border overflow-hidden"
+        >
+          <!-- Marquee ticker -->
+          <div class="footer__marquee" aria-hidden="true">
+            <div class="footer__marquee-track" id="footer-marquee">
+              <span class="footer__marquee-item"
+                >ARMORY <span class="footer__marquee-dot">•</span> TACTICAL
+                STORE <span class="footer__marquee-dot">•</span> LIMITED EDITION
+                2026 <span class="footer__marquee-dot">•</span> PRECISION
+                <span class="footer__marquee-dot">•</span> POWER
+                <span class="footer__marquee-dot">•</span> PURPOSE
+                <span class="footer__marquee-dot">•</span> ELITE ARSENAL
+                <span class="footer__marquee-dot">•</span> OPERATOR GRADE
+                <span class="footer__marquee-dot">•</span>&nbsp;</span
+              >
+              <span class="footer__marquee-item" aria-hidden="true"
+                >ARMORY <span class="footer__marquee-dot">•</span> TACTICAL
+                STORE <span class="footer__marquee-dot">•</span> LIMITED EDITION
+                2026 <span class="footer__marquee-dot">•</span> PRECISION
+                <span class="footer__marquee-dot">•</span> POWER
+                <span class="footer__marquee-dot">•</span> PURPOSE
+                <span class="footer__marquee-dot">•</span> ELITE ARSENAL
+                <span class="footer__marquee-dot">•</span> OPERATOR GRADE
+                <span class="footer__marquee-dot">•</span>&nbsp;</span
+              >
+            </div>
+          </div>
+
+          <!-- Main content -->
+          <div
+            class="max-w-[1700px] mx-auto px-6 lg:px-8 py-[clamp(4rem,8vw,7rem)]"
+          >
+            <div class="footer__main">
+              <!-- Brand column -->
+              <div class="footer__brand">
+                <div class="footer__logo-wrap overflow-hidden">
+                  <div
+                    id="footer-logo"
+                    class="font-display text-[clamp(4rem,9vw,9rem)] leading-[0.88] tracking-[-0.02em] text-white"
+                  >
+                    ARMORY
+                  </div>
+                </div>
+                <p
+                  id="footer-tagline"
+                  data-i18n="footer.tagline"
+                  class="text-[0.65rem] tracking-[0.3em] uppercase text-gold-dim mt-5 opacity-0"
+                >
+                  Precision. Power. Purpose.
+                </p>
+              </div>
+
+              <!-- Nav links -->
+              <nav aria-label="Footer navigation">
+                <p class="footer__col-title" data-i18n="footer.col_nav">
+                  Navigation
+                </p>
+                <ul class="footer__links">
+                  <li>
+                    <a
+                      href="#arsenal"
+                      class="footer__link"
+                      data-i18n="nav.arsenal"
+                      >Arsenal</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#ammo" class="footer__link" data-i18n="nav.ammo"
+                      >Ammo</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="footer__link" data-i18n="nav.accessories"
+                      >Accessories</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#contact"
+                      class="footer__link"
+                      data-i18n="nav.contact"
+                      >Contact</a
+                    >
+                  </li>
+                </ul>
+              </nav>
+
+              <!-- Social -->
+              <div>
+                <p class="footer__col-title" data-i18n="footer.col_social">
+                  Connect
+                </p>
+                <ul class="footer__links">
+                  <li>
+                    <a href="#" class="footer__link footer__social-link">
+                      <i
+                        data-lucide="instagram"
+                        width="13"
+                        height="13"
+                        aria-hidden="true"
+                      ></i>
+                      Instagram
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footer__link footer__social-link">
+                      <i
+                        data-lucide="twitter"
+                        width="13"
+                        height="13"
+                        aria-hidden="true"
+                      ></i>
+                      Twitter / X
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="footer__link footer__social-link">
+                      <i
+                        data-lucide="youtube"
+                        width="13"
+                        height="13"
+                        aria-hidden="true"
+                      ></i>
+                      YouTube
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Legal -->
+              <div>
+                <p class="footer__col-title" data-i18n="footer.col_legal">
+                  Legal
+                </p>
+                <ul class="footer__links">
+                  <li>
+                    <a href="#" class="footer__link" data-i18n="footer.privacy"
+                      >Privacy</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#" class="footer__link" data-i18n="footer.terms"
+                      >Terms</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="design.html"
+                      class="footer__link"
+                      data-i18n="footer.design"
+                      >Design System</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom bar -->
+          <div class="footer__bottom">
+            <div
+              class="max-w-[1700px] mx-auto px-6 lg:px-8 py-5 flex items-center justify-between gap-4 flex-wrap"
+            >
+              <p class="footer__copy opacity-0" data-i18n="footer.copyright">
+                © 2026 ARMORY — All rights reserved.
+              </p>
+              <button
+                id="footer-back-top"
+                class="footer__back-top opacity-0"
+                aria-label="Back to top"
+              >
+                <span data-i18n="footer.back_top">Back to top</span>
+                <svg
+                  width="10"
+                  height="12"
+                  viewBox="0 0 10 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <line
+                    x1="5"
+                    y1="12"
+                    x2="5"
+                    y2="1"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                  />
+                  <polyline
+                    points="1,5 5,1 9,5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    fill="none"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </footer>
       </div>
       <!-- /smooth-content -->
     </div>
