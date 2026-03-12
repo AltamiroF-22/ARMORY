@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARMORY — Premium Tactical Store</title>
+
+    <meta name="description" content="Detailed specs, gallery, and full technical breakdown for ARMORY's elite tactical products." />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="icon" href="data:," />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/output.css" />
+
+    <!-- Restore theme before first paint -->
+    <script>
+      (function () {
+        var t = localStorage.getItem("armory-theme");
+        document.documentElement.dataset.theme = t === "light" ? "light" : "dark";
+      })();
+    </script>
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+  </head>
+
+  <body class="bg-black text-white font-body antialiased overflow-x-hidden">
+
+    <!-- ── Custom cursor ──────────────────────────────────── -->
+    <div id="cur-dot"></div>
+    <div id="cur-brackets">
+      <span class="cur-br cur-br--tl"></span>
+      <span class="cur-br cur-br--tr"></span>
+      <span class="cur-br cur-br--bl"></span>
+      <span class="cur-br cur-br--br"></span>
+    </div>
+
+    <!-- ── Scroll progress bar ────────────────────────────── -->
+    <div id="pd-progress"></div>
+
+    <!-- ── Mobile nav overlay ─────────────────────────────── -->
+    <div id="nav-overlay" aria-hidden="true">
+      <div class="nav-overlay__inner">
+        <ul class="nav-overlay__list">
+          <li>
+            <a href="index.html#arsenal" class="nav-overlay__link">
+              <span class="nav-overlay__num">01</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.arsenal">Arsenal</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#ammo" class="nav-overlay__link">
+              <span class="nav-overlay__num">02</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.ammo">Ammo</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-overlay__link">
+              <span class="nav-overlay__num">03</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.accessories">Accessories</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="index.html#contact" class="nav-overlay__link">
+              <span class="nav-overlay__num">04</span>
+              <span class="nav-overlay__clip">
+                <span class="nav-overlay__text" data-i18n="nav.contact">Contact</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+        <div class="nav-overlay__bottom">
+          <a href="#" data-i18n="nav.login" data-auth-open="login" class="nav-overlay__cta">Login</a>
+          <button
+            id="theme-btn-mobile"
+            aria-label="Toggle theme"
+            onclick="document.getElementById('theme-btn').click()"
+            class="flex items-center gap-1.5 text-[0.6rem] tracking-[0.15em] uppercase text-white/40 hover:text-white/80 transition-colors duration-200 bg-none border-none cursor-pointer font-body"
+          >
+            <i data-lucide="sun" class="theme-btn__icon theme-btn__icon--sun" width="14" height="14" aria-hidden="true"></i>
+            <i data-lucide="moon" class="theme-btn__icon theme-btn__icon--moon" width="14" height="14" aria-hidden="true"></i>
+          </button>
+          <p class="nav-overlay__tag">ARMORY &copy; 2026</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Loader ─────────────────────────────────────────── -->
+    <div id="loader" class="fixed inset-0 z-[1000] flex items-center justify-center overflow-hidden pointer-events-none">
+      <div class="loader__bg"></div>
+      <div class="loader__counter">
+        <span id="loader-count">0</span>
+        <span class="loader__percent">%</span>
+      </div>
+      <div class="loader__brand">
+        <span data-split="brand">ARMORY</span>
+      </div>
+      <p class="loader__tagline">Precision. Power. Purpose.</p>
+      <div class="loader__bar-wrap">
+        <div class="loader__bar"></div>
+      </div>
+    </div>
+
+    <!-- ── Main content ───────────────────────────────────── -->
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+
+        <!-- NAV -->
+        <nav class="nav fixed top-0 left-0 right-0 z-[100] py-4 opacity-0">
+          <div class="max-w-[1700px] mx-auto w-full flex items-center justify-between px-6 lg:px-8">
+            <a href="index.html" class="font-display text-2xl tracking-widest text-white">ARMORY</a>
+
+            <ul class="hidden lg:flex gap-8">
+              <li><a href="index.html#arsenal" data-i18n="nav.arsenal" class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300">Arsenal</a></li>
+              <li><a href="index.html#ammo" data-i18n="nav.ammo" class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300">Ammo</a></li>
+              <li><a href="#" data-i18n="nav.accessories" class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300">Accessories</a></li>
+              <li><a href="index.html#contact" data-i18n="nav.contact" class="text-xs tracking-[0.15em] uppercase text-white/60 hover:text-white transition-opacity duration-300">Contact</a></li>
+            </ul>
+
+            <div class="hidden lg:flex items-center gap-4">
+              <a href="#" data-i18n="nav.login" data-auth-open="login" class="text-[0.7rem] tracking-[0.2em] uppercase text-gold border border-gold px-5 py-2 hover:bg-gold hover:text-black transition-colors duration-300">Login</a>
+
+              <button id="theme-btn" aria-label="Switch to light mode" class="text-white/60 hover:text-white transition-colors duration-300">
+                <i data-lucide="sun" class="theme-btn__icon theme-btn__icon--sun" width="16" height="16" aria-hidden="true"></i>
+                <i data-lucide="moon" class="theme-btn__icon theme-btn__icon--moon" width="16" height="16" aria-hidden="true"></i>
+              </button>
+
+              <div id="lang-switcher" class="relative">
+                <button id="lang-btn" aria-expanded="false" aria-haspopup="listbox" class="flex items-center gap-1.5 text-[0.7rem] tracking-[0.2em] uppercase text-white/50 hover:text-white transition-colors duration-300 select-none">
+                  <span id="lang-flag">🇺🇸</span>
+                  <span id="lang-label">EN</span>
+                  <svg class="w-2.5 h-2.5 lang-chevron" viewBox="0 0 10 6" fill="none">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div id="lang-panel" role="listbox" class="lang-panel">
+                  <button class="lang-option" data-lang="en" role="option"><span>🇺🇸</span><span>English</span></button>
+                  <button class="lang-option" data-lang="pt" role="option"><span>🇧🇷</span><span>Português</span></button>
+                  <button class="lang-option" data-lang="de" role="option"><span>🇩🇪</span><span>Deutsch</span></button>
+                  <button class="lang-option" data-lang="jp" role="option"><span>🇯🇵</span><span>日本語</span></button>
+                </div>
+              </div>
+            </div>
+
+            <button id="nav-burger" aria-expanded="false" aria-label="Menu">
+              <span class="nav-burger__bar"></span>
+              <span class="nav-burger__bar"></span>
+              <span class="nav-burger__bar"></span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- ─────────────────────────────────────────────
+             01 · PRODUCT HERO — sticky image + scrolling info
+        ───────────────────────────────────────────── -->
+        <section id="pd-hero" class="pd-hero">
+
+          <!-- Left · sticky image panel -->
+          <div class="pd-img-panel">
+            <!-- Main product image -->
+            <div class="pd-img" id="pd-main-img"></div>
+
+            <!-- Dark gradient overlay -->
+            <div class="pd-img__overlay"></div>
+
+            <!-- Category badge -->
+            <div class="pd-img__badge" id="pd-badge">Carbine</div>
+
+            <!-- Image counter -->
+            <div class="pd-img__counter">
+              <span id="pd-img-current">01</span>
+              <span class="pd-img__counter-sep"></span>
+              <span id="pd-img-total">04</span>
+            </div>
+
+            <!-- Decorative corner mark -->
+            <div class="pd-img__corner" aria-hidden="true">
+              <span></span><span></span>
+            </div>
+          </div>
+
+          <!-- Right · scrolling product info -->
+          <div class="pd-info-panel">
+
+            <!-- Breadcrumb -->
+            <nav class="pd-breadcrumb" id="pd-breadcrumb" aria-label="Breadcrumb">
+              <a href="index.html" data-i18n="product.home">Home</a>
+              <span aria-hidden="true">/</span>
+              <a href="index.html#arsenal" data-i18n="nav.arsenal">Arsenal</a>
+              <span aria-hidden="true">/</span>
+              <span id="pd-crumb-name">Product</span>
+            </nav>
+
+            <!-- Eyebrow -->
+            <div class="pd-eyebrow" id="pd-eyebrow">
+              <span class="block w-8 h-px bg-gold shrink-0" aria-hidden="true"></span>
+              <span id="pd-cat" class="text-[0.65rem] tracking-[0.3em] uppercase text-gold">01 / Carbine</span>
+            </div>
+
+            <!-- Product name (lines clipped by JS render) -->
+            <h1 class="pd-name font-display" id="pd-name">
+              <span class="block overflow-hidden leading-[0.88]">
+                <span class="pd__title-line">RECCE-16</span>
+              </span>
+              <span class="block overflow-hidden leading-[0.88]">
+                <span class="pd__title-line">CQBR</span>
+              </span>
+            </h1>
+
+            <!-- Price + rating -->
+            <div class="pd-price-row" id="pd-price-row">
+              <span class="pd-price" id="pd-price">$3,499</span>
+              <div class="pd-rating" aria-label="4.9 out of 5 stars, 47 reviews">
+                <span class="pd-stars" aria-hidden="true">★★★★★</span>
+                <span class="pd-reviews">(47)</span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="pd-desc" id="pd-desc">
+              The RECCE-16 CQBR is a close-quarters battle rifle engineered for operators demanding precision in confined environments.
+            </p>
+
+            <!-- Quick spec highlights (rendered by JS) -->
+            <div class="pd-highlights" id="pd-highlights">
+              <div class="pd-highlight">
+                <span class="pd-highlight__val">5.56</span>
+                <span class="pd-highlight__label">Caliber</span>
+              </div>
+              <div class="pd-highlight">
+                <span class="pd-highlight__val">6.5</span>
+                <span class="pd-highlight__label">lbs</span>
+              </div>
+              <div class="pd-highlight">
+                <span class="pd-highlight__val">16"</span>
+                <span class="pd-highlight__label">Barrel</span>
+              </div>
+            </div>
+
+            <!-- Configuration selector -->
+            <div class="pd-config" id="pd-config">
+              <p class="pd-config__label" data-i18n="product.config_label">Configuration</p>
+              <div class="pd-config__options">
+                <button class="pd-config__opt is-active" data-i18n="product.config_std">Standard</button>
+                <button class="pd-config__opt" data-i18n="product.config_sup">Suppressed</button>
+                <button class="pd-config__opt" data-i18n="product.config_des">Desert</button>
+              </div>
+            </div>
+
+            <!-- Quantity + Add to cart -->
+            <div class="pd-actions" id="pd-actions">
+              <div class="pd-qty" aria-label="Quantity">
+                <button class="pd-qty__btn" id="pd-qty-minus" aria-label="Decrease quantity">−</button>
+                <span class="pd-qty__val" id="pd-qty-val" aria-live="polite">1</span>
+                <button class="pd-qty__btn" id="pd-qty-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="pd-cta hoverable" aria-label="Add to arsenal">
+                <span data-i18n="product.cta_add">Add to Arsenal</span>
+                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+                  <line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.2"/>
+                  <polyline points="9,1 13,5 9,9" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Wishlist -->
+            <button class="pd-wishlist hoverable" id="pd-wishlist">
+              <i data-lucide="heart" width="13" height="13" aria-hidden="true"></i>
+              <span data-i18n="product.wishlist">Save to wishlist</span>
+            </button>
+
+            <!-- Delivery / trust signals -->
+            <div class="pd-delivery" id="pd-delivery">
+              <div class="pd-delivery__item">
+                <i data-lucide="shield-check" width="13" height="13" aria-hidden="true"></i>
+                <span data-i18n="product.cert">Military-grade certification</span>
+              </div>
+              <div class="pd-delivery__item">
+                <i data-lucide="truck" width="13" height="13" aria-hidden="true"></i>
+                <span data-i18n="product.ship">Ships in 3–5 business days</span>
+              </div>
+              <div class="pd-delivery__item">
+                <i data-lucide="package" width="13" height="13" aria-hidden="true"></i>
+                <span data-i18n="product.free_ship">Free shipping over $500</span>
+              </div>
+            </div>
+
+          </div>
+          <!-- /pd-info-panel -->
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             02 · IMAGE GALLERY — horizontal draggable strip
+        ───────────────────────────────────────────── -->
+        <section id="pd-gallery" class="border-t border-border">
+          <div class="pd-gallery__header">
+            <div class="flex items-center gap-4">
+              <span class="block w-8 h-px bg-gold shrink-0" aria-hidden="true"></span>
+              <span class="text-[0.65rem] tracking-[0.3em] uppercase text-gold" data-i18n="product.gallery_label">02 / Gallery</span>
+            </div>
+            <p class="text-[0.6rem] tracking-[0.25em] uppercase text-white/20" data-i18n="product.drag">Drag to explore</p>
+          </div>
+
+          <div class="pd-gallery__track-wrap" aria-label="Product image gallery">
+            <div class="pd-gallery__track" id="pd-gallery-track">
+              <!-- Images rendered by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             03 · TECHNICAL SPECS
+        ───────────────────────────────────────────── -->
+        <section id="pd-specs" class="border-t border-border">
+          <!-- Watermark bg text (rendered by JS) -->
+          <div class="pd-specs__bg-text" id="pd-specs-bg" aria-hidden="true">RECCE-16</div>
+
+          <div class="pd-specs__inner max-w-[1700px] mx-auto px-6 lg:px-8">
+
+            <!-- Left: section title + sub -->
+            <div class="pd-specs__left">
+              <div class="pd-specs__eyebrow flex items-center gap-4 mb-6">
+                <span class="block w-8 h-px bg-gold shrink-0" aria-hidden="true"></span>
+                <span class="text-[0.65rem] tracking-[0.3em] uppercase text-gold" data-i18n="product.specs_label">03 / Specs</span>
+              </div>
+              <div class="pd-specs__section-label font-display">
+                <span class="block overflow-hidden leading-[0.88]">
+                  <span class="pd-specs__label-line">TECH</span>
+                </span>
+                <span class="block overflow-hidden leading-[0.88]">
+                  <span class="pd-specs__label-line">SPEC</span>
+                </span>
+              </div>
+              <p class="pd-specs__sub" data-i18n="product.specs_sub">Full technical breakdown of the platform — tolerances, materials, and field-verified performance data.</p>
+            </div>
+
+            <!-- Right: specs table (rendered by JS) -->
+            <div class="pd-specs__right">
+              <div class="pd-specs__table" id="pd-specs-table">
+                <!-- rows rendered by JS -->
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             04 · OVERVIEW — description + features
+        ───────────────────────────────────────────── -->
+        <section id="pd-overview" class="border-t border-border">
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8">
+            <div class="pd-overview__grid">
+
+              <!-- Left: text -->
+              <div class="pd-overview__text">
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="block w-8 h-px bg-gold shrink-0" aria-hidden="true"></span>
+                  <span class="text-[0.65rem] tracking-[0.3em] uppercase text-gold" data-i18n="product.overview_label">04 / Overview</span>
+                </div>
+
+                <h2 class="pd-overview__title font-display">
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="pd-overview__title-line" data-i18n="product.overview_title1">BUILT FOR</span>
+                  </span>
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="pd-overview__title-line" data-i18n="product.overview_title2">MISSION.</span>
+                  </span>
+                </h2>
+
+                <p class="pd-overview__desc" data-i18n="product.overview_desc">
+                  Every component has been chosen for reliability under sustained fire, extreme conditions, and the unforgiving demands of real-world deployment.
+                </p>
+
+                <!-- Feature list (rendered by JS) -->
+                <ul class="pd-features" id="pd-features" aria-label="Key features">
+                  <li class="pd-feature">Chrome-lined barrel for sustained fire</li>
+                  <li class="pd-feature">Mil-spec forged aluminum receivers</li>
+                  <li class="pd-feature">Free-floating M-LOK handguard</li>
+                  <li class="pd-feature">Ambidextrous operator controls</li>
+                </ul>
+              </div>
+
+              <!-- Right: product image with parallax -->
+              <div class="pd-overview__img-wrap">
+                <div class="pd-overview__img" id="pd-overview-img"></div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             05 · RELATED PRODUCTS
+        ───────────────────────────────────────────── -->
+        <section id="pd-related" class="border-t border-border">
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8">
+
+            <div class="pd-related__header">
+              <div>
+                <div class="flex items-center gap-4 mb-5">
+                  <span class="block w-8 h-px bg-gold shrink-0" aria-hidden="true"></span>
+                  <span class="text-[0.65rem] tracking-[0.3em] uppercase text-gold" data-i18n="product.related_label">05 / Related</span>
+                </div>
+                <h2 class="pd-related__title font-display">
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="pd-related__title-line">ALSO IN</span>
+                  </span>
+                  <span class="block overflow-hidden leading-[0.88]">
+                    <span class="pd-related__title-line">ARSENAL</span>
+                  </span>
+                </h2>
+              </div>
+              <a href="index.html#arsenal" class="pd-related__viewall hoverable">
+                <span data-i18n="arsenal.cta">View All</span>
+                <i data-lucide="arrow-right" width="12" height="12" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <!-- Related cards rendered by JS (reuses .arsenal__grid + .arsenal-card) -->
+            <div class="arsenal__grid" id="pd-related-grid">
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ─────────────────────────────────────────────
+             FOOTER (identical to index.html)
+        ───────────────────────────────────────────── -->
+        <footer id="footer" class="bg-dark border-t border-border overflow-hidden">
+
+          <!-- Marquee ticker -->
+          <div class="footer__marquee" aria-hidden="true">
+            <div class="footer__marquee-track" id="footer-marquee">
+              <span class="footer__marquee-item">ARMORY <span class="footer__marquee-dot">•</span> TACTICAL STORE <span class="footer__marquee-dot">•</span> LIMITED EDITION 2026 <span class="footer__marquee-dot">•</span> PRECISION <span class="footer__marquee-dot">•</span> POWER <span class="footer__marquee-dot">•</span> PURPOSE <span class="footer__marquee-dot">•</span> ELITE ARSENAL <span class="footer__marquee-dot">•</span> OPERATOR GRADE <span class="footer__marquee-dot">•</span>&nbsp;</span>
+              <span class="footer__marquee-item" aria-hidden="true">ARMORY <span class="footer__marquee-dot">•</span> TACTICAL STORE <span class="footer__marquee-dot">•</span> LIMITED EDITION 2026 <span class="footer__marquee-dot">•</span> PRECISION <span class="footer__marquee-dot">•</span> POWER <span class="footer__marquee-dot">•</span> PURPOSE <span class="footer__marquee-dot">•</span> ELITE ARSENAL <span class="footer__marquee-dot">•</span> OPERATOR GRADE <span class="footer__marquee-dot">•</span>&nbsp;</span>
+            </div>
+          </div>
+
+          <!-- Main columns -->
+          <div class="max-w-[1700px] mx-auto px-6 lg:px-8 py-[clamp(4rem,8vw,7rem)]">
+            <div class="footer__main">
+              <div class="footer__brand">
+                <div class="footer__logo-wrap overflow-hidden">
+                  <div id="footer-logo" class="font-display text-[clamp(4rem,9vw,9rem)] leading-[0.88] tracking-[-0.02em] text-white">ARMORY</div>
+                </div>
+                <p id="footer-tagline" data-i18n="footer.tagline" class="text-[0.65rem] tracking-[0.3em] uppercase text-gold-dim mt-5 opacity-0">Precision. Power. Purpose.</p>
+              </div>
+
+              <nav aria-label="Footer navigation">
+                <p class="footer__col-title" data-i18n="footer.col_nav">Navigation</p>
+                <ul class="footer__links">
+                  <li><a href="index.html#arsenal" class="footer__link" data-i18n="nav.arsenal">Arsenal</a></li>
+                  <li><a href="index.html#ammo" class="footer__link" data-i18n="nav.ammo">Ammo</a></li>
+                  <li><a href="#" class="footer__link" data-i18n="nav.accessories">Accessories</a></li>
+                  <li><a href="index.html#contact" class="footer__link" data-i18n="nav.contact">Contact</a></li>
+                </ul>
+              </nav>
+
+              <div>
+                <p class="footer__col-title" data-i18n="footer.col_social">Connect</p>
+                <ul class="footer__links">
+                  <li><a href="#" class="footer__link footer__social-link"><i data-lucide="instagram" width="13" height="13" aria-hidden="true"></i>Instagram</a></li>
+                  <li><a href="#" class="footer__link footer__social-link"><i data-lucide="twitter" width="13" height="13" aria-hidden="true"></i>Twitter / X</a></li>
+                  <li><a href="#" class="footer__link footer__social-link"><i data-lucide="youtube" width="13" height="13" aria-hidden="true"></i>YouTube</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="footer__col-title" data-i18n="footer.col_legal">Legal</p>
+                <ul class="footer__links">
+                  <li><a href="#" class="footer__link" data-i18n="footer.privacy">Privacy</a></li>
+                  <li><a href="#" class="footer__link" data-i18n="footer.terms">Terms</a></li>
+                  <li><a href="design.html" class="footer__link" data-i18n="footer.design">Design System</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer__bottom">
+            <div class="max-w-[1700px] mx-auto px-6 lg:px-8 py-5 flex items-center justify-between gap-4 flex-wrap">
+              <p class="footer__copy opacity-0" data-i18n="footer.copyright">© 2026 ARMORY — All rights reserved.</p>
+              <button id="footer-back-top" class="footer__back-top opacity-0" aria-label="Back to top">
+                <span data-i18n="footer.back_top">Back to top</span>
+                <svg width="10" height="12" viewBox="0 0 10 12" fill="none" aria-hidden="true">
+                  <line x1="5" y1="12" x2="5" y2="1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                  <polyline points="1,5 5,1 9,5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </footer>
+
+      </div><!-- /smooth-content -->
+    </div><!-- /smooth-wrapper -->
+
+    <!-- ── Auth Overlay (identical to index.html) ─────────── -->
+    <div id="auth-overlay" aria-hidden="true">
+      <div class="auth__backdrop"></div>
+
+      <button id="auth-close" class="auth__close" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <line x1="1" y1="1" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="17" y1="1" x2="1" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="auth__grid">
+        <div class="auth__visual">
+          <div class="auth__visual-ruled" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div class="auth__visual-top">
+            <span class="auth__visual-brand">ARMORY</span>
+            <span class="auth__visual-year">© 2026</span>
+          </div>
+          <div class="auth__visual-center">
+            <span class="auth__visual-count" id="auth-member-count">247</span>
+            <p class="auth__visual-count-label">Operators<br/>Enlisted</p>
+          </div>
+          <p class="auth__visual-tagline">Precision.<br/>Power.<br/>Purpose.</p>
+          <div class="auth__visual-crosshair" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none">
+              <circle cx="50" cy="50" r="40" stroke="#c8a96e" stroke-width="0.5" stroke-dasharray="3 6"/>
+              <circle cx="50" cy="50" r="25" stroke="#c8a96e" stroke-width="0.8"/>
+              <line x1="50" y1="5" x2="50" y2="25" stroke="#c8a96e" stroke-width="1"/>
+              <line x1="50" y1="75" x2="50" y2="95" stroke="#c8a96e" stroke-width="1"/>
+              <line x1="5" y1="50" x2="25" y2="50" stroke="#c8a96e" stroke-width="1"/>
+              <line x1="75" y1="50" x2="95" y2="50" stroke="#c8a96e" stroke-width="1"/>
+              <circle cx="50" cy="50" r="2" fill="#c8a96e"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="auth__panel">
+          <div class="auth__form" id="auth-form-login">
+            <header class="auth__form-head">
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_login">01 / ACCESS</span>
+              <h2 class="auth__title">
+                <span class="auth__title-line" data-i18n="auth.title_login_1">Welcome</span>
+                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_login_2">Back.</span>
+              </h2>
+            </header>
+            <form id="form-login" novalidate>
+              <div class="auth__field">
+                <input type="email" id="l-email" class="auth__input" placeholder=" " autocomplete="email" required/>
+                <label for="l-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input type="password" id="l-pass" class="auth__input" placeholder=" " autocomplete="current-password" required/>
+                <label for="l-pass" class="auth__label" data-i18n="auth.label_password">Password</label>
+                <span class="auth__underline"></span>
+              </div>
+              <p class="auth__error" id="login-error" role="alert" aria-live="polite"></p>
+              <button type="submit" class="auth__submit">
+                <span class="auth__submit-text" data-i18n="auth.btn_enter">Enter</span>
+                <svg class="auth__submit-arrow" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+                  <line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.2"/>
+                  <polyline points="9,1 13,5 9,9" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                </svg>
+              </button>
+            </form>
+            <p class="auth__switch">
+              <span data-i18n="auth.no_account">No account?</span>
+              <button type="button" class="auth__switch-btn" data-auth-to="register" data-i18n="auth.create_one">Create one →</button>
+            </p>
+          </div>
+
+          <div class="auth__form" id="auth-form-register">
+            <header class="auth__form-head">
+              <span class="auth__eyebrow" data-i18n="auth.eyebrow_register">02 / ENLIST</span>
+              <h2 class="auth__title">
+                <span class="auth__title-line" data-i18n="auth.title_reg_1">New</span>
+                <span class="auth__title-line auth__title-line--outline" data-i18n="auth.title_reg_2">Operator.</span>
+              </h2>
+            </header>
+            <form id="form-register" novalidate>
+              <div class="auth__field">
+                <input type="text" id="r-name" class="auth__input" placeholder=" " autocomplete="name" required/>
+                <label for="r-name" class="auth__label" data-i18n="auth.label_name">Full name</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input type="email" id="r-email" class="auth__input" placeholder=" " autocomplete="email" required/>
+                <label for="r-email" class="auth__label" data-i18n="auth.label_email">Email address</label>
+                <span class="auth__underline"></span>
+              </div>
+              <div class="auth__field">
+                <input type="password" id="r-pass" class="auth__input" placeholder=" " autocomplete="new-password" minlength="6" required/>
+                <label for="r-pass" class="auth__label" data-i18n="auth.label_pass_hint">Password — min 6 chars</label>
+                <span class="auth__underline"></span>
+              </div>
+              <p class="auth__error" id="reg-error" role="alert" aria-live="polite"></p>
+              <button type="submit" class="auth__submit">
+                <span class="auth__submit-text" data-i18n="auth.btn_enlist">Enlist</span>
+                <svg class="auth__submit-arrow" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true">
+                  <line x1="0" y1="5" x2="13" y2="5" stroke="currentColor" stroke-width="1.2"/>
+                  <polyline points="9,1 13,5 9,9" stroke="currentColor" stroke-width="1.2" fill="none"/>
+                </svg>
+              </button>
+            </form>
+            <p class="auth__switch">
+              <span data-i18n="auth.enlisted">Already enlisted?</span>
+              <button type="button" class="auth__switch-btn" data-auth-to="login" data-i18n="auth.sign_in">Sign in →</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Scripts ────────────────────────────────────────── -->
+    <!-- Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons();</script>
+
+    <!-- GSAP + plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"></script>
+
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+    <!-- Product page boot -->
+    <script type="module" src="js/main-product.js"></script>
+  </body>
+</html>

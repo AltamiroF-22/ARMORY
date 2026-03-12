@@ -56,7 +56,7 @@ export class Arsenal {
             <h3  class="arsenal-card__name">${t.name}</h3>
             <div class="arsenal-card__footer">
               <span class="arsenal-card__price">${t.price}</span>
-              <a href="#" class="arsenal-card__link hoverable" aria-label="View ${t.name}">
+              <a href="product.html?id=${p.id}" class="arsenal-card__link hoverable" aria-label="View ${t.name}">
                 <i data-lucide="arrow-right" width="13" height="13" aria-hidden="true"></i>
               </a>
             </div>
