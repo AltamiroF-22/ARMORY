@@ -1,0 +1,54 @@
+project/
+│
+├── assets/
+│   ├── images/
+│   ├── textures/
+│   └── models/
+│
+├── components/
+│   ├── layout/
+│   │   ├── Navbar.vue
+│   │   └── Footer.vue
+│   │
+│   ├── hero/
+│   │   ├── HeroSection.vue
+│   │   └── HeroCanvas.vue
+│   │
+│   ├── products/
+│   │   ├── ProductCard.vue
+│   │   └── ProductGrid.vue
+│   │
+│   └── sections/
+│       ├── ArsenalSection.vue
+│       ├── AmmoSection.vue
+│       └── ContactSection.vue
+│
+├── pages/
+│   ├── index.vue
+│   └── product/
+│       └── [slug].vue
+│
+├── composables/
+│   ├── useLenis.js
+│   ├── useScrollTrigger.js
+│   └── useGsapContext.js
+│
+├── lib/
+│   ├── gsap.js
+│   └── lenis.js
+│
+├── three/
+│   ├── scene.js
+│   ├── camera.js
+│   ├── renderer.js
+│   └── objects/
+│       └── weaponModel.js
+│
+├── plugins/
+│   ├── gsap.client.js
+│   └── lenis.client.js
+│
+├── styles/
+│   └── main.css
+│
+└── nuxt.config.ts
